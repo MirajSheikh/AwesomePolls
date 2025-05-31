@@ -4,11 +4,15 @@ Todo -->
 3. Make a profile page
 4. Make a settings page
 5. Make a your polls page
-6. Delete Polls
+6. Implement poll deletion
 
+Task 1 (deadline - 3/6/25) -->
+Completely change the theme to Dark theme
+Make it fully mobile friendly
 
-
-
+Task 2 (deadline - 10/6/25) -->
+Complete profile, your polls, favorites, and settings(optional) pages
+Implement favorite system and poll deletion
 
 Done -->
 1. There is a home page
