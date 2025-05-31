@@ -1,0 +1,165 @@
+#backToExplore{
+  width: 200px;
+  align-self: start;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 30%);
+  background-color: hsl(240, 50%, 90%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: color 0.1s ease, background-color 0.1s ease, border 0.1s ease;
+}
+#backToExplore:hover{
+  color: hsl(240, 50%, 30%);
+  background-color: hsl(240, 50%, 80%);
+  border: 2px solid hsl(240, 50%, 50%);
+}
+#backToExplore:active{
+  background-color: hsl(240, 50%, 50%);
+  color: hsl(0, 0%, 100%);
+  border: 2px solid hsl(240, 50%, 50%);
+}
+
+.pollLoader{
+  margin: auto;
+  margin-top: 400px;
+  transform: scale(1.75);
+}
+
+.votePage{
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background: linear-gradient(90deg, hsl(45, 100%, 85%), hsl(45, 100%, 95%), hsl(45, 100%, 85%));
+}
+.votePage h2{
+  min-width: max-content;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
+  color: hsl(240, 50%, 50%);
+}
+.choices h1{
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-family: "Ubuntu", sans-serif;
+  color: hsl(0, 0%, 100%);
+}
+.choices{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: hsl(240, 50%, 50%);
+}
+.choice, .selected{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 50px;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.choice{
+  background-color: hsl(240, 50%, 90%);
+  border: 2px solid hsl(240, 50%, 40%);
+}
+.selected{
+  background-color: hsl(240, 50%, 30%);
+  border: 2px solid hsl(240, 50%, 20%);
+}
+.choice:hover{
+  background-color: hsl(240, 50%, 80%);
+}
+.choice h2{
+  flex: 1;
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: normal;
+  color: hsl(240, 50%, 40%);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.selected h2{
+  flex: 1;
+  font-size: 2rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  color: hsl(240, 50%, 90%);
+}
+.choices h4{
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: "Monsterrat", sans-serif;
+  color: hsl(240, 50%, 70%);
+}
+.pollInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.pollInfo h2{
+  flex: 1;
+  font-family: "Monsterrat", sans-serif;
+  color: hsl(240, 50%, 60%);
+}
+.shareButton{
+  width: 200px;
+  align-self: end;
+  font-size: 1.2rem;
+  font-family: "Sansation", sans-serif;
+  color: hsl(0, 0%, 20%);
+  background-color: hsl(45, 100%, 70%);
+  border: 2px solid hsl(0, 0%, 20%);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+.shareButton:hover{
+  background-color: hsl(45, 100%, 60%);
+  color: hsl(0, 0%, 20%);
+}
+
+.pollInfo .liked{
+  width: 100px;
+  font-family: "Sansation", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(240, 50%, 50%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.pollInfo .unliked{
+  width: 100px;
+  font-family: "Sansation", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 50%);
+  background-color: hsl(240, 50%, 95%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+}
+.unliked:hover, .favorite:hover{
+  background-color: hsl(240, 50%, 90%);
+}
+.favorite{
+  width: 100px;
+  font-family: "Sansation", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 50%);
+  background-color: hsl(240, 50%, 95%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+}

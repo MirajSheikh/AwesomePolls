@@ -1,0 +1,91 @@
+.leftSideBar{
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: hsl(45, 100%, 90%);
+  border-right: 2px solid hsl(45, 100%, 50%);
+}
+
+.search{
+  margin: 100px 20px 0 20px;
+  display: flex;
+}
+.search input[type=text]{
+  width: 200px;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  background-color: hsl(45, 100%, 95%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-right: none;
+  border-radius: 50px 0 0 50px;
+  padding: 1rem;
+}
+.search input[type=text]:focus{
+  outline: none;
+}
+.searchButton{
+  font-size: 1.5rem;
+  background-color: hsl(45, 100%, 95%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-left: none;
+  border-radius: 0 50px 50px 0;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.searchButton:hover{
+  background-color: hsl(45, 100%, 80%);
+}
+.searchList{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  max-width: 250px;
+  max-height: 500px;
+  background-color: hsl(240, 50%, 90%);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px hsla(240, 50%, 40%, 0.3);
+}
+.searchItem{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(240, 50%, 40%);
+  padding: 1rem;
+}
+.searchItem:hover{
+  background-color: hsl(240, 50%, 85%);
+  cursor: pointer;
+}
+
+.settings{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  padding: 20px 0;
+}
+.settings button{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: hsl(240, 50%, 40%);
+  text-align: left;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  padding: 20px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+.settings button:hover{
+  background-color: hsl(45, 100%, 80%);
+}
+
+@media(max-width: 950px){
+
+  
+
+}

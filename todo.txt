@@ -1,0 +1,24 @@
+Todo -->
+1. Implement Vote expiry functionality
+2. Implement the Favorites system
+3. Make a profile page
+4. Make a settings page
+5. Make a your polls page
+6. Delete Polls
+
+
+
+
+
+Done -->
+1. There is a home page
+2. There is a page which contains all polls
+3. There is a page for voting in each poll
+4. A username is kept for keeping track of who the particular vote belongs to
+5. Votes are being cast with the help of websocket
+6. Each voter can cast only one vote (kind of)
+7. Implemented a User management system
+8. Highlights current user's vote/selection (only frontend; not backend)
+9. Users are able to vote and change their vote anytime they want before expiry
+10. Like Dislike system works properly
+11. Implemented a Search Bar

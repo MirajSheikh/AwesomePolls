@@ -1,0 +1,129 @@
+.newPollAndSideBar{
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+}
+
+.newPoll{
+  margin: 100px 4rem 200px 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.newPoll h1{
+  font-family: "Fugaz One", sans-serif;
+  font-weight: normal;
+  font-size: 3rem;
+  color: hsl(240, 50%, 50%);
+}
+.pollTitle{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.pollTitle h2, .pollChoices h2{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
+  color: hsl(240, 50%, 40%);
+}
+.newPoll input[type=text]{
+  font-size: 1.5rem;
+  font-family: "Ubuntu", sans-serif;
+  color: hsl(240, 50%, 40%);
+  background-color: hsl(45, 100%, 95%);
+  border: 2px solid hsl(240, 50%, 40%);
+  border-radius: 5px;
+  padding: 1rem;
+  overflow: hidden;
+}
+.newPoll input[type=text]:focus{
+  outline: none;
+}
+.author{
+  display: flex;
+  align-items: center;
+}
+.author h2, p{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  color: hsl(240, 50%, 40%);
+  font-weight: normal;
+}
+.author h2{
+  flex: 1;
+  text-align: right;
+}
+.expiry{
+  appearance: none;
+  width: min-content;
+  margin-left: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 40%);
+  text-align: center;
+  background-color: hsl(45, 100%, 90%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.options{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.option{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.option p{
+  min-width: max-content;
+  font-family: "Mosterrat", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 40%);
+}
+.option input[type=text]{
+  width: 100%;
+}
+.option button{
+  font-size: 1.5rem;
+  background-color: hsl(45, 100%, 95%);
+  cursor: pointer;
+  padding: 1rem;
+  border: 2px solid hsl(240, 50%, 40%);
+  border-radius: 5px;
+  transition: background-color 0.1s ease, border 0.1s ease;
+}
+.option button:hover{
+  background-color: hsl(0, 50%, 70%);
+  border: 2px solid hsl(0, 50%, 50%);
+}
+.endButtons{
+  display: flex;
+  justify-content: space-between;
+}
+#addButton, #createButton{
+  width: 200px;
+  font-size: 1.5rem;
+  font-family: "Sansation", sans-serif;
+  color: hsl(240, 50%, 40%);
+  padding: 1rem;
+  border: 2px solid hsl(240, 50%, 40%);
+  border-radius: 5px;
+  background-color: hsl(45, 100%, 95%);
+  cursor: pointer;
+  transition: background-color 0.1s ease, border 0.1s ease, color 0.1s ease;
+}
+#addButton:hover{
+  background-color: hsl(120, 50%, 50%);
+  border: 2px solid hsl(120, 50%, 40%);
+  color: hsl(0, 100%, 100%);
+}
+#createButton:hover{
+  background-color: hsl(240, 50%, 50%);
+  border: 2px solid hsl(240, 50%, 50%);
+  color: hsl(0, 100%, 100%);
+}
+

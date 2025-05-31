@@ -1,0 +1,15 @@
+.window{
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 500px;
+  padding: 1rem;
+  background-color: hsl(120, 30%, 80%);
+  border: 2px solid hsl(120, 50%, 30%);
+}
+.window p{
+  font-size: 1.2rem;
+  color: hsl(120, 50%, 20%);
+  font-family: "Mosterrat", sans-serif;
+  text-align: center;
+}
