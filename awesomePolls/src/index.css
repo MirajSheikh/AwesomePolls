@@ -10,6 +10,6 @@ p, h1, h2, h3, h4, h5, h6{
 }
 
 body{
-  background: linear-gradient(90deg, hsl(240, 100%, 85%), hsl(240, 100%, 95%), hsl(240, 100%, 85%));
+  background: linear-gradient(90deg, hsl(200, 70%, 90%), hsl(200, 70%, 95%), hsl(200, 70%, 90%));
   margin: 0;
 }

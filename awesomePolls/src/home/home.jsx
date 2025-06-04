@@ -5,6 +5,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import BouncingDots from "../spinner/bouncingdots";
+import Navbar from "../navbar/navbar";
+import SamplePoll from "../samplepoll/samplepoll";
 
 const Home = () => {
 
@@ -40,39 +42,53 @@ const Home = () => {
   }
 
   return(
+    <>
+      <Navbar />
 
-    <motion.div
-      initial={{opacity: 0}} 
-      animate={{opacity: 1}} 
-      exit={{opacity: 0}} 
-      transition={{duration: 0.3}}>
+      <motion.div
+        initial={{opacity: 0}} 
+        animate={{opacity: 1}} 
+        exit={{opacity: 0}} 
+        transition={{duration: 0.3}}>
 
-    <div className={styles.home}>
+        <div className={styles.home}>
 
-      <h1 id={styles.homeTitle}>Awesome Polls</h1>
-      <h2 id={styles.homeSubTitle}>Create, Vote and Participate in Polls from all over the World</h2>
+          <div className={styles.homeContent}>
 
+            <h1 id={styles.homeTitle}>AwesomePolls</h1>
+            <h2 id={styles.homeSubTitle}>You want Polls? We Got'em!! </h2>
 
-      {!loadingUser 
+            <div className={styles.homeButtons}>
+              <button onClick={() => navigate("/new")}>Make a Poll</button>
+              <button onClick={() => navigate("/polls")}>Explore</button>
+            </div>
 
-      ? !user 
-        ? <div className={styles.usernameBlock}>
-          <input type="text" id="username" placeholder="Your Username" />
-          <input type="text" id="password" placeholder="Enter Password" />
-          <button onClick={handleCreateUser}>Get Started</button>
+          </div>
+
+          <div className={styles.homeImage}>
+            <SamplePoll />
+          </div>
+
         </div>
-        : <div className={styles.buttonsBlock}>
-          <h2>Hello {`${user}`}</h2>
-          <button onClick={() => navigate("/new")}>New Poll</button>
-          <button onClick={() => navigate("/polls")}>Explore</button>
-          <button onClick={() => setUser(null)}>Logout</button>
+
+        <hr style={{margin: "0.5rem 3rem", border: "1px solid hsl(200, 70%, 40%)"}}/>
+
+        <div className={styles.home}>
+          <div className={styles.statsLeft}>
+            <h2>1M+</h2>
+            <h3>Total Voters</h3>
+          </div>
+
+          <div className={styles.statsRight}>
+            <h2>10,000+</h2>
+            <h3>Active Polls</h3>
+            
+          </div>
         </div>
 
-      : <BouncingDots />
-      }
-
-    </div>
     </motion.div>
+
+    </>
 
   );
 
