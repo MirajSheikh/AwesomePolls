@@ -7,6 +7,7 @@ import { useState } from "react";
 import BouncingDots from "../spinner/bouncingdots";
 import Navbar from "../navbar/navbar";
 import SamplePoll from "../samplepoll/samplepoll";
+import FallingPolls from "../fallingpolls/fallingpolls";
 
 const Home = () => {
 
@@ -44,6 +45,8 @@ const Home = () => {
   return(
     <>
       <Navbar />
+
+      <FallingPolls />
 
       <motion.div
         initial={{opacity: 0}} 

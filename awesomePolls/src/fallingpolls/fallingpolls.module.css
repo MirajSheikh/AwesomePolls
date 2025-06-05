@@ -1,0 +1,22 @@
+.fallingPolls{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -2;
+}
+
+.fallingPolls div{
+  z-index: -1;
+  /*height: 50px;*/
+  /*width: 50px;*/
+  /*top: 100px;*/
+  /*left: 100px;*/
+  position: absolute;
+  border: 5px solid hsl(0, 70%, 70%);
+  opacity: 0.3;
+}
+
+@keyframes fall{
+  0%{transform: translateY(0);}
+  100%{transform: translateY(95vh);}
+}

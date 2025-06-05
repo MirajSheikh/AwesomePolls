@@ -2,13 +2,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .home:hover{
   
 }
-
+.home:first-child{
+  height: 100vh;
+}
 .homeContent{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 200px 0;
@@ -61,8 +65,14 @@
   gap: 1rem;
   padding: 100px 0;
 }
+.statsLeft{
+  padding-left: 150px;
+}
+.statsRight{
+  padding-right: 150px;
+}
 .statsLeft h2, .statsRight h2{
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 600;
   font-family: "Ubuntu", sans-serif;
   color: hsl(200, 70%, 50%);
@@ -106,4 +116,26 @@
     padding: 250px 0;
   }
 
+}
+
+@media(max-width: 850px){
+
+  .home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  #homeTitle{
+    font-size: 4rem;
+  }
+
+  .homeImage{
+    width: 100%;
+  }
+
+  .statsLeft, .statsRight{
+    padding: 50px 0;
+  }
 }

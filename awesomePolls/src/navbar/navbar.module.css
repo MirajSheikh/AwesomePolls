@@ -1,5 +1,5 @@
 .navbar{
-  z-index: 2;
+  z-index: 5;
   position: fixed;
   top: 0;
   background-color: hsl(240, 50%, 70%);
@@ -23,3 +23,10 @@
   padding: 17px;
 }
 
+@media(max-width: 500px){
+
+  .navbar{
+    display: none;
+  }
+
+}
