@@ -6,6 +6,9 @@ Todo -->
 5. Make a your polls page
 6. Implement poll deletion
 
+make a toggle for turning the falling boxes on or off
+make a toggle for light/dark mode
+
 Task 1 (deadline - 5/6/25) -->
 Overhaul design for Home/Landing Page
 Overhaul design for New Polls Page
