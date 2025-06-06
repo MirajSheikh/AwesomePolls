@@ -26,13 +26,13 @@
   font-family: "Fugaz One", sans-serif;
   font-size: 4.5rem;
   font-weight: 500;
-  color: hsl(200, 70%, 50%);
+  color: hsl(0, 0%, 90%);
 }
 #homeSubTitle{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
-  color: hsl(200, 70%, 65%);
+  color: hsl(0, 0%, 90%);
 }
 .homeButtons{
   display: flex;
@@ -43,19 +43,20 @@
   font-size: 1.2rem;
   font-family: "Sansation", sans-serif;
   color: hsl(0, 0%, 90%);
-  background-color: hsl(200, 70%, 50%);
-  border: 2px solid hsl(200, 70%, 40%);
+  background-color: hsl(200, 5%, 20%);
+  border: 2px solid hsl(200, 5%, 15%);
   border-radius: 10px;
-  box-shadow: 0 0 5px hsl(200, 70%, 40%);
+  box-shadow: 0 0 5px hsl(0, 0%, 50%);
   padding: 15px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 .homeButtons button:hover{
-  background-color: hsl(200, 70%, 60%);
+  background-color: hsl(200, 5%, 25%);
 }
 .homeButtons button:active{
-  background-color: hsl(200, 70%, 40%);
+  color: hsl(0, 0%, 10%);
+  background-color: hsl(200, 5%, 95%);
 }
 .homeImage{
   display: flex;
@@ -78,13 +79,13 @@
   font-size: 4.5rem;
   font-weight: 600;
   font-family: "Ubuntu", sans-serif;
-  color: hsl(200, 70%, 50%);
+  color: hsl(0, 0%, 90%);
 }
 .statsLeft h3, .statsRight h3{
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
-  color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 80%);
 }
 
 

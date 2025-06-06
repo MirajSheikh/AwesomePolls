@@ -1,0 +1,24 @@
+.toggle{
+  height: 40px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.ball{
+  height: 34px;
+  width: 34px;
+  margin: 0 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.ball h4{
+  font-size: 1.2rem;
+}

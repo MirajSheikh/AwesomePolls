@@ -1,19 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./home.module.css"
 import useUserContext from "../pollProvider";
+import lightStyles from "./home.module.css"
+import darkStyles from "./homedark.module.css"
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import BouncingDots from "../spinner/bouncingdots";
 import Navbar from "../navbar/navbar";
 import SamplePoll from "../samplepoll/samplepoll";
 import FallingPolls from "../fallingpolls/fallingpolls";
 
 const Home = () => {
 
-  const {user, setUser} = useUserContext()
-
-  const [loadingUser, setLoadingUser] = useState(false)
+  const { theme } = useUserContext()
 
   const navigate = useNavigate();
 
@@ -43,7 +40,7 @@ const Home = () => {
   }
 
   return(
-    <>
+    <div className={theme ? lightStyles.homePage : darkStyles.homePage}>
       <Navbar />
 
       <FallingPolls />
@@ -54,35 +51,37 @@ const Home = () => {
         exit={{opacity: 0}} 
         transition={{duration: 0.3}}>
 
-        <div className={styles.home}>
+        <div className={theme ? lightStyles.home : darkStyles.home}>
 
-          <div className={styles.homeContent}>
+          <div className={theme ? lightStyles.homeContent : darkStyles.homeContent}>
 
-            <h1 id={styles.homeTitle}>AwesomePolls</h1>
-            <h2 id={styles.homeSubTitle}>You want Polls? We Got'em!! </h2>
+            <h1 id={theme ? lightStyles.homeTitle : darkStyles.homeTitle}>AwesomePolls</h1>
+            <h2 id={theme ? lightStyles.homeSubTitle : darkStyles.homeSubTitle}>You want Polls? We Got'em!! </h2>
 
-            <div className={styles.homeButtons}>
+            <div className={theme ? lightStyles.homeButtons : darkStyles.homeButtons}>
               <button onClick={() => navigate("/new")}>Make a Poll</button>
               <button onClick={() => navigate("/polls")}>Explore</button>
             </div>
 
           </div>
 
-          <div className={styles.homeImage}>
+          <div className={theme ? lightStyles.homeImage : darkStyles.homeImage}>
             <SamplePoll />
           </div>
 
         </div>
 
-        <hr style={{margin: "0.5rem 3rem", border: "1px solid hsl(200, 70%, 40%)"}}/>
+        <hr style={theme 
+          ? {margin: "0.5rem 3rem", border: "1px solid hsl(200, 70%, 40%)"}
+          : {margin: "0.5rem 3rem", border: "1px solid hsl(200, 5%, 95%)"}}/>
 
-        <div className={styles.home}>
-          <div className={styles.statsLeft}>
+        <div className={theme ? lightStyles.stats : darkStyles.stats}>
+          <div className={theme ? lightStyles.statsLeft : darkStyles.statsLeft}>
             <h2>1M+</h2>
             <h3>Total Voters</h3>
           </div>
 
-          <div className={styles.statsRight}>
+          <div className={theme ? lightStyles.statsRight : darkStyles.statsRight}>
             <h2>10,000+</h2>
             <h3>Active Polls</h3>
             
@@ -91,7 +90,7 @@ const Home = () => {
 
     </motion.div>
 
-    </>
+    </div>
 
   );
 

@@ -1,0 +1,53 @@
+.search{
+  display: flex;
+}
+.search input[type=text]{
+  width: 30vw;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  color: hsl(200, 5%, 90%);
+  background-color: hsl(200, 5%, 30%);
+  border: 2px solid hsl(200, 5%, 40%);
+  border-right: none;
+  border-radius: 50px 0 0 50px;
+  padding: 10px 20px;
+}
+.search input[type=text]:focus{
+  outline: none;
+}
+.searchButton{
+  font-size: 1.5rem;
+  background-color: hsl(200, 5%, 40%);
+  border: 2px solid hsl(200, 5%, 40%);
+  border-left: none;
+  border-radius: 0 50px 50px 0;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.searchButton:hover{
+  background-color: hsl(200, 5%, 50%);
+}
+.searchList{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  max-width: 250px;
+  max-height: 500px;
+  background-color: hsl(240, 50%, 90%);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px hsla(240, 50%, 40%, 0.3);
+}
+.searchItem{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(240, 50%, 40%);
+  padding: 1rem;
+}
+.searchItem:hover{
+  background-color: hsl(240, 50%, 85%);
+  cursor: pointer;
+}
+
+

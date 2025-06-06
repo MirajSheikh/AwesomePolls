@@ -1,16 +1,22 @@
+import useUserContext from "../pollProvider"
 import styles from "./samplepoll.module.css"
+import darkStyles from "./samplepolldark.module.css"
 
 const SamplePoll = () => {
 
+  const { theme } = useUserContext()
+
+  const css = theme ? styles : darkStyles
+
   return(
 
-    <div className={styles.samplePoll}>
+    <div className={css.samplePoll}>
 
-      <div className={styles.spTitle}>
+      <div className={css.spTitle}>
         <h2>What's Your Favorite Pet Animal</h2>
       </div>
 
-      <div className={styles.spOptions}>
+      <div className={css.spOptions}>
         <div>
           <h3>Dogs 👑</h3><p>2.7k votes</p>
         </div>
@@ -26,7 +32,7 @@ const SamplePoll = () => {
 
       </div>
 
-      <div className={styles.spStats}>
+      <div className={css.spStats}>
         <div>
           <div><h2>6,198 votes</h2></div>
           <div>

@@ -2,14 +2,13 @@
   z-index: 5;
   position: fixed;
   top: 0;
-  background-color: hsl(240, 50%, 70%);
+  background-color: hsl(240, 5%, 8%);
   height: 50px;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid hsl(240, 50%, 40%);
-  box-shadow: 0 5px 10px hsla(240, 50%, 40%, 0.3);
+  border-bottom: 2px solid hsl(240, 5%, 40%);
 }
 
 .navLeft a{
@@ -17,9 +16,9 @@
   font-size: 1rem;
   font-family: "Sansation", sans-serif;
   font-weight: 800;
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(240, 50%, 60%);
-  border-right: 2px solid hsl(240, 50%, 40%);
+  color: hsl(0, 0%, 90%);
+  background-color: hsl(240, 5%, 15%);
+  border-right: 2px solid hsl(240, 5%, 40%);
   padding: 17px;
 }
 

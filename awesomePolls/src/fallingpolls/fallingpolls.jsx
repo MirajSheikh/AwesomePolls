@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 import styles from "./fallingpolls.module.css"
+import useUserContext from "../pollProvider"
 
 const FallingPolls = () => {
+
+  const { theme } = useUserContext()
 
   const [fallingObjects, setFallingObjects] = useState([])
 
@@ -52,7 +55,8 @@ const FallingPolls = () => {
           width: fo.width,
           top: fo.top,
           left: fo.left,
-          animation: `${styles.fall} ${fo.time} ease-in infinite`
+          animation: `${styles.fall} ${fo.time} ease-in infinite`,
+          border: `${theme ? '5px solid hsl(0, 70%, 70%)' : '5px solid hsl(200, 70%, 70%)'}`
         }}></div>
 
       ))}

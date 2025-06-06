@@ -6,6 +6,7 @@ import NewPoll from "./newpoll/newPoll"
 import Explore from "./explore/explore"
 import Vote from "./vote/vote"
 import { PollProvider } from "./pollProvider"
+import Login from "./login/login"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <BrowserRouter>
 
         <PollProvider>
+        <Login />
         <Routes>
 
           <Route path="/" element={<Home />} />
