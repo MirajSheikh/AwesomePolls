@@ -12,3 +12,13 @@ p, h1, h2, h3, h4, h5, h6{
 body{
   margin: 0;
 }
+
+input[type=text]:focus{
+  outline: none;
+}
+
+::placeholder{
+  color: hsl(0, 0%, 40%);
+}
+
+

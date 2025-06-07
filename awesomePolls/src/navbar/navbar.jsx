@@ -7,7 +7,7 @@ import SearchBar from "../searchbar/searchbar";
 
 const Navbar = () => {
 
-  const { theme, setUser } = useUserContext()
+  const { theme, user, setUser } = useUserContext()
 
   const styles = theme ? light : dark
 
@@ -15,9 +15,8 @@ const Navbar = () => {
 
   function showLoginOverlay(){
 
-    const overlay = document.getElementById("loginOverlay")
-    overlay.style.display = "block"
-
+    const dialog = document.querySelector("dialog")
+    dialog.showModal()
   }
 
   return(
@@ -34,8 +33,8 @@ const Navbar = () => {
         </div>
 
         <div className={styles.navRight}>
-          <button onClick={showLoginOverlay}>Login</button>
-          <button onClick={() => {
+          {user ? <h3 className={styles.navUsername}>{user}</h3> : <button className={styles.navLoginButton} onClick={showLoginOverlay}>Login</button>}
+          <button className={styles.navLogoutButton} onClick={() => {
             setUser(null)
             navigate("/")
           }}>Logout</button>

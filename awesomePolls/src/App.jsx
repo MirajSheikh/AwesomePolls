@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
 
         <PollProvider>
-        <Login />
+          <Login />
         <Routes>
 
           <Route path="/" element={<Home />} />

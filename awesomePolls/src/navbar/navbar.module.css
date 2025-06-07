@@ -25,6 +25,25 @@
 
 .navRight{
   display: flex;
+  align-items: center;
   gap: 1rem;
   margin-right: 30px;
 }
+
+.navUsername{
+  font-size: 1.2rem;
+  color: hsl(0, 0%, 90%);
+  padding: 10px 20px;
+}
+
+.navLoginButton, .navLogoutButton{
+  font-family: "Sansation", sans-serif;
+  font-size: 1rem;
+  color: hsl(0, 0%, 10%);
+  background-color: hsl(240, 50%, 90%);
+  border: 2px solid hsl(240, 50%, 40%);
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import useUserContext from "../pollProvider"
 import light from "./login.module.css"
 import dark from "./logindark.module.css"
@@ -8,6 +9,24 @@ const Login = () => {
   const { theme, setUser } = useUserContext()
 
   const styles = theme ? light : dark
+
+  const overlayRef = useRef(null)
+
+  useEffect(() => {
+
+    const overlay = document.querySelector("dialog")
+    overlay.addEventListener("click", handleClickOutsideOverlay)
+
+    function handleClickOutsideOverlay(event){
+      if(overlayRef.current && 
+        event.target.contains(overlayRef.current)){
+        closeWindow()
+      }
+    }
+
+    return () => overlay.removeEventListener("click", handleClickOutsideOverlay)
+
+  }, [])
 
   async function handleLogin(){
 
@@ -34,31 +53,36 @@ const Login = () => {
       console.log("Cannot Login!")
     }
 
+    document.getElementById("username").value = ""
+    document.getElementById("password").value = ""
+
     closeWindow()
 
   }
 
   function closeWindow(){
 
-    const overlay = document.getElementById("loginOverlay")
-    overlay.style.display = "none"
+    const dialog = document.querySelector("dialog")
+    dialog.close()
 
   }
 
   return(
 
-    <div id="loginOverlay" className={styles.loginOverlay}>
+    <dialog>
 
-      <div className={styles.login}>
+      <div className={styles.login} ref={overlayRef}>
 
         <button id={styles.closeButton} onClick={closeWindow}>Close</button>
-        <input id="username" type="text" placeholder="username" />
-        <input id="password" type="text" placeholder="password" />
+        <h2>AwesomePolls</h2>
+        <h3>Enter Your Username and Password to Get Started</h3>
+        <input id="username" type="text" className={styles.userInputs} placeholder="Username" />
+        <input id="password" type="text" className={styles.userInputs} placeholder="Password" />
         <button id={styles.submitButton} onClick={handleLogin}>Get Started</button>
 
       </div>
 
-    </div>
+    </dialog>
 
   )
 

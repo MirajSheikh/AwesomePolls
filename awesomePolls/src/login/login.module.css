@@ -1,18 +1,83 @@
-.loginOverlay{
+dialog{
+  all: unset;  /*important for removing the default dialog styling*/
   position: fixed;
   display: none;
   width: 100vw;
   height: 100vh;
   background-color: hsla(0, 0%, 10%, 0.3);
+  opacity: 0;
+  transition: all 0.2s ease;
+  transition-behavior: allow-discrete;
 }
+dialog:open{
+  opacity: 1;
+  display: block;
+
+  @starting-style{
+    opacity: 0;
+  }
+}
+
 .login{
-  width: 20vw;
+  width: 400px;
   display: flex;
   margin: auto;
-  margin-top: 40vh;
+  margin-top: 20vh;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
   justify-content: center;
-  background-color: hsl(200, 5%, 10%);
+  background: linear-gradient(-45deg, hsl(200, 70%, 80%), hsl(200, 70%, 95%), hsl(200, 70%, 80%));
+  border: 2px solid white;
+  border-top: 2px solid hsl(200, 70%, 50%);
+  border-radius: 5px;
+  padding: 25px;
 }
+
+.login h2{
+  font-size: 3rem;
+  font-family: "Fugaz One", sans-serif;
+  font-weight: 500;
+  color: hsl(200, 70%, 50%);
+}
+.login h3{
+  font-size: 1.2rem;
+  font-family: "Monsterrat", sans-serif;
+  color: hsl(200, 70%, 70%);
+  text-align: center;
+}
+
+#closeButton{
+  font-size: 1rem;
+  color: hsl(0, 70%, 30%);
+  align-self: flex-end;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#submitButton{
+  width: 100%;
+  font-size: 1rem;
+  color: hsl(0, 0%, 90%);
+  border: 2px solid hsl(200, 70%, 40%);
+  border-radius: 5px;
+  background-color: hsl(200, 70%, 50%);
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+#submitButton:hover{
+  background-color: hsl(200, 70%, 60%);
+}
+
+.userInputs{
+  font-size: 1.2rem;
+  font-family: "Ubuntu", sans-serif;
+  color: hsl(0, 0%, 10%);
+  background-color: hsl(200, 70%, 90%);
+  border: 2px solid hsl(200, 70%, 40%);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
