@@ -41,8 +41,6 @@ const Home = () => {
 
   return(
     <div className={theme ? lightStyles.homePage : darkStyles.homePage}>
-      <Navbar />
-
       <FallingPolls />
 
       <motion.div

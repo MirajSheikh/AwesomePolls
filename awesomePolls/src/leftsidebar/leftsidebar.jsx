@@ -1,30 +1,67 @@
-import styles from "./leftsidebar.module.css"
+import light from "./leftsidebar.module.css"
+import dark from "./leftsidebardark.module.css"
 import useUserContext from "../pollProvider"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const LeftSideBar = () => {
 
-  const { setUser } = useUserContext()
+  const { theme, setUser } = useUserContext()
+
+  const navigate = useNavigate()
+
+  const styles = theme ? light : dark
+
+  const [collapsed, setCollapsed] = useState(true)
+  const [width, setWidth] = useState(window.innerWidth)
+
+  function getWindowWidth(){
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+
+    window.addEventListener("resize", getWindowWidth)
+
+    return () => {window.removeEventListener("resize", getWindowWidth)}
+
+  }, [])
+
+  useEffect(() => {
+    if(width < 700){
+      setCollapsed(true)
+    }
+  }, [width])
 
   return(
 
-    <div className={styles.leftSideBar}>
+    <div className={collapsed ? styles.collapsedSideBar : styles.expandedSideBar}>
 
       <div className={styles.filters}>
         
       </div>
      
       <div className={styles.settings}>
-        <button>Profile</button>
-        <button>Your Polls</button>
-        <button onClick={() => navigate("/polls")}>Explore</button>
-        <button onClick={() => navigate("/new")}>New Poll</button>
-        <button>Settings</button>
-        <button>Favorites</button>
-        <button>Most Voted Polls</button>
-        <button onClick={() => {
-          setUser(null)
-          navigate("/")
-        }}>Logout</button>
+        <div 
+          onClick={() => setCollapsed(!collapsed)} 
+          style={{justifyContent: `${collapsed ? "start" : "end"}`}}>
+          <img src="https://placehold.co/80" />
+        </div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Profile</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Your Polls</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Explore</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>New Poll</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Settings</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Favorites</button>}</div>
+        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Most Voted Polls</button>}</div>
+        <div>{collapsed 
+          ? <img src="https://placehold.co/40" /> 
+          : <button onClick={() => {
+            setUser(null)
+            navigate("/")
+          }
+          }>Logout</button>}
+        </div>
       </div>
 
 

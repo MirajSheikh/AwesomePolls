@@ -6,6 +6,7 @@ import MessageWindow from "../messagewindow/messagewindow";
 import useUserContext from "../pollProvider";
 import LeftSideBar from "../leftsidebar/leftsidebar";
 import { motion } from "framer-motion";
+import PreviewPoll from "../previewpoll/previewpoll";
 
 const NewPoll = () => {
 
@@ -54,9 +55,6 @@ const NewPoll = () => {
   return(
 
     <>
-      <Navbar />
-
-      <div className={styles.newPollAndSideBar}>
       <LeftSideBar />
 
       <motion.div 
@@ -67,6 +65,7 @@ const NewPoll = () => {
 
       {message !== null && <MessageWindow message={message} />}
 
+        <div className={styles.pollAndPreviewContainer}>
       <div className={styles.newPoll}>
 
         <h1>Start a New Poll</h1>
@@ -108,9 +107,12 @@ const NewPoll = () => {
         </div>
 
       </div>
-      </motion.div>
+
+        <PreviewPoll />
 
       </div>
+      </motion.div>
+
     </>
 
   );

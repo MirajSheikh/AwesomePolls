@@ -4,8 +4,8 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 70%, 80%);
-  border-right: 2px solid hsl(240, 50%, 50%);
+  background-color: hsl(200, 5%, 15%);
+  border-right: 2px solid hsl(0, 0%, 40%);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out;
@@ -20,7 +20,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 70%, 80%);
+  background-color: hsl(200, 5%, 15%);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out;
@@ -45,7 +45,7 @@
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  color: hsl(240, 50%, 40%);
+  color: hsl(0, 0%, 90%);
   text-align: left;
   border: none;
   border-radius: 10px;
@@ -54,18 +54,12 @@
   cursor: pointer;
 }
 .settings button:hover{
-  background-color: hsl(200, 70%, 75%);
+  background-color: hsl(200, 5%, 20%);
 }
 .settings img{
   width: 60px;
   height: 60px;
   cursor: pointer;
-}
-
-@media(max-width: 950px){
-
-  
-
 }
 
 @media(max-width: 700px){

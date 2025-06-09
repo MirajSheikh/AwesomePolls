@@ -176,8 +176,6 @@ const Vote = () => {
   return(
 
     <>
-    <Navbar />
-
     <motion.div
     initial={{opacity: 0}} 
     animate={{opacity: 1}}

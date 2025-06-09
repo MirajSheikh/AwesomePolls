@@ -46,3 +46,18 @@
   cursor: pointer;
 }
 
+@media(max-width: 900px){
+
+  .navLoginButton, .navLogoutButton{
+    display: none;
+  }
+
+}
+
+@media(max-width: 600px){
+
+  .navRight div:nth-child(3){
+    display: none;
+  }
+
+}

@@ -7,6 +7,7 @@ import Explore from "./explore/explore"
 import Vote from "./vote/vote"
 import { PollProvider } from "./pollProvider"
 import Login from "./login/login"
+import Navbar from "./navbar/navbar"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 
         <PollProvider>
           <Login />
+          <Navbar />
         <Routes>
 
           <Route path="/" element={<Home />} />

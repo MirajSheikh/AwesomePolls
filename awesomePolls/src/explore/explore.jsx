@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import styles from "./explore.module.css"
+import light from "./explore.module.css"
+import dark from "./exploredark.module.css"
 import axios from "axios";
 import Navbar from "../navbar/navbar";
 import LeftSideBar from "../leftsidebar/leftsidebar";
@@ -7,10 +8,15 @@ import Explorepolls from "./explorepolls";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Spinner from "../spinner/spinner";
+import useUserContext from "../pollProvider";
 
 const Explore = () => {
 
   const navigate = useNavigate()
+
+  const { theme } = useUserContext()
+
+  const styles = theme ? light : dark
 
   const [loading, setLoading] = useState(true)
   const [polls, setPolls] = useState([])
@@ -53,10 +59,7 @@ const Explore = () => {
   return(
 
     <>
-    <Navbar />
-
-    <div className={styles.sideBarAndMainContainer}>
-    <LeftSideBar setInput={setInput} setSearched={setSearched}/>
+    <LeftSideBar />
 
     <motion.div 
       initial={{opacity: 0}} 
@@ -102,7 +105,6 @@ const Explore = () => {
     </div>
     </motion.div>
 
-    </div>
     </>
 
   );

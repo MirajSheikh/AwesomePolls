@@ -31,7 +31,7 @@
   font-family: "Fugaz One", sans-serif;
   font-size: 3rem;
   font-weight: 500;
-  color: hsl(240, 50%, 50%);
+  color: hsl(0, 0%, 90%);
   text-align: center;
 }
 .poll{
@@ -120,7 +120,7 @@
 }
 .noPolls h2, h3{
   font-family: "Ubuntu", sans-serif;
-  color: hsl(240, 50%, 40%);
+  color: hsl(0, 0%, 80%);
 }
 .noPolls button{
   font-family: "Sansation", sans-serif;
