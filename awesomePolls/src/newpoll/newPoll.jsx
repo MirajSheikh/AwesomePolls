@@ -7,6 +7,7 @@ import useUserContext from "../pollProvider";
 import LeftSideBar from "../leftsidebar/leftsidebar";
 import { motion } from "framer-motion";
 import PreviewPoll from "../previewpoll/previewpoll";
+import ExpirySlider from "../expiryslider/expiryslider";
 
 const NewPoll = () => {
 
@@ -76,15 +77,7 @@ const NewPoll = () => {
         </div>
 
         <div className={styles.author}>
-          <p>Expiry (in hours) : </p>
-          <select className={styles.expiry} id="expiry">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="6">6</option>
-            <option value="12">12</option>
-            <option value="24">24</option>
-          </select>
+          <ExpirySlider />
           <h2>{`Created By - ${user}`}</h2>
         </div>
 

@@ -46,30 +46,14 @@
 .author{
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-.author h2, p{
+.author h2{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.5rem;
   color: hsl(240, 50%, 40%);
-  font-weight: normal;
 }
-.author h2{
-  flex: 1;
-  text-align: right;
-}
-.expiry{
-  appearance: none;
-  width: min-content;
-  margin-left: 1rem;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1.2rem;
-  color: hsl(240, 50%, 40%);
-  text-align: center;
-  background-color: hsl(45, 100%, 90%);
-  border: 2px solid hsl(240, 50%, 50%);
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 .options{
   display: flex;
   flex-direction: column;
@@ -83,7 +67,7 @@
 }
 .option p{
   min-width: max-content;
-  font-family: "Mosterrat", sans-serif;
+  font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   color: hsl(240, 50%, 40%);
 }

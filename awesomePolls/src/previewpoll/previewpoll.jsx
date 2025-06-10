@@ -13,7 +13,7 @@ const PreviewPoll = () => {
 
   return(
 
-    <div className={styles.previewContainer}>
+    <div className={styles.previewContainer} style={{backgroundColor: `${preview ? "hsl(200, 70%, 70%)" : "hsl(200, 70%, 95%)"}`}}>
 
       {preview && <h1 className={styles.previewTitle}>Title</h1>}
 

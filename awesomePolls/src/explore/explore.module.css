@@ -118,7 +118,7 @@
   align-items: center;
   gap: 2rem;
 }
-.noPolls h2, h3{
+.noPolls h2, .noPolls h3{
   font-family: "Ubuntu", sans-serif;
   color: hsl(240, 50%, 40%);
 }

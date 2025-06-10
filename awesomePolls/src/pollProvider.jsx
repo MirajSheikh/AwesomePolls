@@ -4,7 +4,7 @@ import { userContext } from "./contexts"
 export const PollProvider = ({ children }) => {
 
   const [user, setUser] = useState(null)
-  const [theme, setTheme] = useState(true)
+  const [theme, setTheme] = useState(false)
 
   return(
 
