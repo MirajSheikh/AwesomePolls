@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Navbar from "../navbar/navbar";
-import styles from "./newPoll.module.css"
+import light from "./newPoll.module.css"
+import dark from "./newpolldark.module.css"
 import axios from "axios";
 import MessageWindow from "../messagewindow/messagewindow";
 import useUserContext from "../pollProvider";
@@ -11,10 +11,15 @@ import ExpirySlider from "../expiryslider/expiryslider";
 
 const NewPoll = () => {
 
-  const { user } = useUserContext()
+  const { user, theme } = useUserContext()
+
+  const styles = theme ? light : dark
 
   const [options, setOptions] = useState(["", ""])
   const [message, setMessage] = useState(null)
+  const [previewOpened, setPreviewOpened] = useState(false)
+  const [title, setTitle] = useState("")
+  const [askForLogin, setAskForLogin] = useState(true)
 
   function handleAddOption(){
     const newOption = ""
@@ -34,6 +39,12 @@ const NewPoll = () => {
   }
 
   function handleCreatePoll(){
+
+    if(!user){
+      showLoginOverlay()
+      return
+    }
+
     const title = document.getElementById("newPollTitle").value
     const opts = options.filter(o => o !== "")
     const author = user
@@ -53,6 +64,17 @@ const NewPoll = () => {
     setTimeout(() => setMessage(null), 2000)
   }
 
+  function handleTitleChange(){
+    setTitle(document.getElementById("newPollTitle").value)
+  }
+
+  function showLoginOverlay(){
+
+    const dialog = document.querySelector("dialog")
+    dialog.showModal()
+    setAskForLogin(false)
+  }
+
   return(
 
     <>
@@ -67,18 +89,21 @@ const NewPoll = () => {
       {message !== null && <MessageWindow message={message} />}
 
         <div className={styles.pollAndPreviewContainer}>
-      <div className={styles.newPoll}>
+      <div className={styles.newPoll} style={{
+            transform: `${previewOpened ? "translateX(0)" : "translateX(100px)"}`
+          }}>
 
         <h1>Start a New Poll</h1>
 
         <div className={styles.pollTitle}>
           <h2>Title</h2>
-          <input type="text" id="newPollTitle" />
+          <input type="text" id="newPollTitle" onChange={handleTitleChange} />
         </div>
 
+        <ExpirySlider times={[1, 2, 3, 6, 12, 24]} />
+
         <div className={styles.author}>
-          <ExpirySlider />
-          <h2>{`Created By - ${user}`}</h2>
+          <h2>{user ? `Created By - ${user}` : askForLogin && showLoginOverlay()}</h2>
         </div>
 
         <div className={styles.pollChoices}>
@@ -101,7 +126,7 @@ const NewPoll = () => {
 
       </div>
 
-        <PreviewPoll />
+        <PreviewPoll setPreviewOpened={setPreviewOpened} title={title} options={options} />
 
       </div>
       </motion.div>

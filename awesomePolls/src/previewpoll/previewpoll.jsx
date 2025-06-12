@@ -3,7 +3,7 @@ import light from "./previewpoll.module.css"
 import dark from "./previewpolldark.module.css"
 import { useState } from "react"
 
-const PreviewPoll = () => {
+const PreviewPoll = ({ setPreviewOpened, title, options }) => {
 
   const { theme } = useUserContext()
 
@@ -13,15 +13,24 @@ const PreviewPoll = () => {
 
   return(
 
-    <div className={styles.previewContainer} style={{backgroundColor: `${preview ? "hsl(200, 70%, 70%)" : "hsl(200, 70%, 95%)"}`}}>
+    <div className={styles.previewContainer} 
+      style={{
+        backgroundColor: theme 
+          ? `${preview ? "hsl(200, 70%, 70%)" : "hsl(200, 70%, 95%)"}` 
+          : `${preview ? "hsl(200, 5%, 20%)" : "hsl(200, 5%, 10%)"}`,
+        padding: `${preview ? "200px 50px" : "200px 0"}`,
+        width: `${preview ? "300px" : "max-content"}`
+      }}>
 
-      {preview && <h1 className={styles.previewTitle}>Title</h1>}
+      {preview && <h1 className={styles.previewTitle}>{`${title === "" ? "Title" : title}`}</h1>}
 
       {preview && <div className={styles.options}>
-        <div className={styles.option}>
-          <h2>Option</h2>
-          <h3>Votes</h3>
-        </div>
+        {options.map((option, i) => (
+          <div key={i} className={styles.option}>
+            <h2>{option === "" ? `Option ${i+1}` : option}</h2>
+            <h3>0 Votes</h3>
+          </div>
+        ))}
       </div>}
 
       {preview && <div className={styles.stats}>
@@ -34,8 +43,14 @@ const PreviewPoll = () => {
       </div>}
 
       {preview 
-        ? <button onClick={() => setPreview(false)}>Hide Preview</button> 
-        : <button onClick={() => setPreview(true)}>Show Preview</button>}
+        ? <button id={styles.hidePreviewButton} onClick={() => {
+          setPreview(false)
+          setPreviewOpened(false)
+        }} >Hide Preview</button> 
+        : <button id={styles.showPreviewButton} onClick={() => {
+          setPreview(true)
+          setPreviewOpened(true)
+        }} >Show Preview</button>}
 
     </div>
 

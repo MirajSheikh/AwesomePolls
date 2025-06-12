@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import useUserContext from "../pollProvider"
 import light from "./login.module.css"
 import dark from "./logindark.module.css"
 import axios from "axios"
+import BouncingDots from "../spinner/bouncingdots"
 
 const Login = () => {
 
@@ -11,6 +12,8 @@ const Login = () => {
   const styles = theme ? light : dark
 
   const overlayRef = useRef(null)
+
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
 
@@ -38,12 +41,19 @@ const Login = () => {
       return
     }
 
+    setLoading(true)
+
     const req = {
       username: username,
       password: password
     }
 
+    const start = Date.now()
+
     const res = await axios.post(`http://localhost:8080/user`, req)
+
+    const elapsed = Date.now() - start
+    const minWaitTime = 1000
 
     if(res.data){
       setUser(username)
@@ -53,10 +63,13 @@ const Login = () => {
       console.log("Cannot Login!")
     }
 
-    document.getElementById("username").value = ""
-    document.getElementById("password").value = ""
+    setTimeout(() => {
+      closeWindow()
+    }, Math.max(0, minWaitTime - elapsed))
 
-    closeWindow()
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
 
   }
 
@@ -75,10 +88,15 @@ const Login = () => {
 
         <button id={styles.closeButton} onClick={closeWindow}>Close</button>
         <h2>AwesomePolls</h2>
-        <h3>Enter Your Username and Password to Get Started</h3>
-        <input id="username" type="text" className={styles.userInputs} placeholder="Username" />
-        <input id="password" type="text" className={styles.userInputs} placeholder="Password" />
-        <button id={styles.submitButton} onClick={handleLogin}>Get Started</button>
+
+        {loading 
+          ? <BouncingDots /> 
+          : <div className={styles.inputFields}>
+          <h3>Enter Your Username and Password to Get Started</h3>
+          <input id="username" type="text" className={styles.userInputs} placeholder="Username" />
+          <input id="password" type="text" className={styles.userInputs} placeholder="Password" />
+          <button id={styles.submitButton} onClick={handleLogin}>Get Started</button>
+        </div>}
 
       </div>
 

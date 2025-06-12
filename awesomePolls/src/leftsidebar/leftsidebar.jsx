@@ -35,7 +35,7 @@ const LeftSideBar = () => {
 
   return(
 
-    <div className={collapsed ? styles.collapsedSideBar : styles.expandedSideBar}>
+    <div className={collapsed ? styles.collapsedSideBar : styles.expandedSideBar} style={{zIndex: "2"}}>
 
       <div className={styles.filters}>
         

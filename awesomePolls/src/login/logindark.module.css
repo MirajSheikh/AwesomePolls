@@ -33,6 +33,14 @@ dialog:open{
   border-radius: 5px;
   padding: 25px;
 }
+
+.inputFields{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
 .login h2{
   font-size: 3rem;
   font-family: "Fugaz One", sans-serif;
@@ -60,10 +68,10 @@ dialog:open{
   font-size: 1rem;
   color: hsl(0, 0%, 90%);
   border: 2px solid hsl(200, 5%, 50%);
-  border-radius: 5px;
+  border-radius: 50px;
   background-color: hsl(200, 5%, 35%);
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 15px 20px;
   transition: all 0.2s ease;
 }
 #submitButton:hover{
@@ -71,6 +79,7 @@ dialog:open{
 }
 
 .userInputs{
+  width: 250px;
   font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
   color: hsl(0, 0%, 90%);
