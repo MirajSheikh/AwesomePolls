@@ -48,9 +48,9 @@ const LeftSideBar = () => {
           <img src="https://placehold.co/80" />
         </div>
         <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Profile</button>}</div>
-        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Your Polls</button>}</div>
-        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Explore</button>}</div>
-        <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>New Poll</button>}</div>
+        <div onClick={() => navigate("/mypolls")}>{collapsed ? <img src="https://placehold.co/40" /> : <button>My Polls</button>}</div>
+        <div onClick={() => navigate("/polls")}>{collapsed ? <img src="https://placehold.co/40" /> : <button>Explore</button>}</div>
+        <div onClick={() => navigate("/new")}>{collapsed ? <img src="https://placehold.co/40" /> : <button>New Poll</button>}</div>
         <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Settings</button>}</div>
         <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Favorites</button>}</div>
         <div>{collapsed ? <img src="https://placehold.co/40" /> : <button>Most Voted Polls</button>}</div>

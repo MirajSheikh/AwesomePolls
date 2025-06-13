@@ -1,6 +1,5 @@
 import light from "./searchbar.module.css"
 import dark from "./searchbardark.module.css"
-import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useEffect, useState, useRef } from "react"
 import useUserContext from "../pollProvider"
@@ -10,8 +9,6 @@ const SearchBar = ({ setInput, setSearched }) => {
   const { theme } = useUserContext()
 
   const styles = theme ? light : dark
-
-  const navigate = useNavigate()
 
   const searchListRef = useRef(null)
   const searchBarRef = useRef(null)

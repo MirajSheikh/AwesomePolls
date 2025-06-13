@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import light from "./explore.module.css"
 import dark from "./exploredark.module.css"
 import axios from "axios";
-import Navbar from "../navbar/navbar";
 import LeftSideBar from "../leftsidebar/leftsidebar";
 import Explorepolls from "./explorepolls";
 import { useNavigate } from "react-router-dom";

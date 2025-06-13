@@ -16,8 +16,8 @@ const PreviewPoll = ({ setPreviewOpened, title, options }) => {
     <div className={styles.previewContainer} 
       style={{
         backgroundColor: theme 
-          ? `${preview ? "hsl(200, 70%, 70%)" : "hsl(200, 70%, 95%)"}` 
-          : `${preview ? "hsl(200, 5%, 20%)" : "hsl(200, 5%, 10%)"}`,
+          ? `${preview ? "hsl(200, 70%, 70%)" : "hsla(200, 70%, 95%, 0)"}` 
+          : `${preview ? "hsl(200, 5%, 20%)" : "hsla(200, 5%, 10%, 0)"}`,
         padding: `${preview ? "200px 50px" : "200px 0"}`,
         width: `${preview ? "300px" : "max-content"}`
       }}>

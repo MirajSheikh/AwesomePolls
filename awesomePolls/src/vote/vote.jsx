@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "./vote.module.css"
+import light from "./vote.module.css"
+import dark from "./votedark.module.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../navbar/navbar";
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import useUserContext from "../pollProvider";
@@ -11,7 +11,9 @@ import BouncingDots from "../spinner/bouncingdots";
 
 const Vote = () => {
 
-  const {user} = useUserContext()
+  const {user, theme} = useUserContext()
+
+  const styles = theme ? light : dark
 
   const { pollId } = useParams()
 

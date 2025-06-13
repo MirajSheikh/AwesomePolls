@@ -25,6 +25,7 @@ function App() {
           <Route path="/new" element={<NewPoll />} />
           <Route path="/polls" element={<Explore />} />
           <Route path="/polls/:pollId" element={<Vote />} />
+          <Route path="/mypolls"  />
 
         </Routes>
         </PollProvider>

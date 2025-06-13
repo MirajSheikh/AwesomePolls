@@ -2,22 +2,19 @@
   width: 200px;
   align-self: start;
   font-size: 1.2rem;
-  color: hsl(240, 50%, 30%);
-  background-color: hsl(240, 50%, 90%);
-  border: 2px solid hsl(240, 50%, 50%);
+  color: hsl(240, 50%, 40%);
+  background-color: hsl(200, 70%, 80%);
+  border: 2px solid hsl(0, 0%, 10%);
   border-radius: 10px;
   padding: 1rem;
-  transition: color 0.1s ease, background-color 0.1s ease, border 0.1s ease;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
 }
 #backToExplore:hover{
-  color: hsl(240, 50%, 30%);
-  background-color: hsl(240, 50%, 80%);
-  border: 2px solid hsl(240, 50%, 50%);
+  background-color: hsl(200, 70%, 70%);
 }
 #backToExplore:active{
-  background-color: hsl(240, 50%, 50%);
-  color: hsl(0, 0%, 100%);
-  border: 2px solid hsl(240, 50%, 50%);
+  background-color: hsl(200, 70%, 60%);
 }
 
 .pollLoader{
@@ -30,27 +27,27 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background: linear-gradient(90deg, hsl(200, 70%, 80%), hsl(200, 70%, 90%), hsl(200, 70%, 80%));
+  background: linear-gradient(90deg, hsl(200, 5%, 10%), hsl(200, 5%, 20%), hsl(200, 5%, 10%));
   padding: 100px;
 }
 .votePage h2{
   min-width: max-content;
   font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
-  color: hsl(240, 50%, 50%);
+  color: hsl(0, 0%, 90%);
 }
 .choices h1{
   margin-bottom: 1rem;
   font-size: 3rem;
   font-family: "Ubuntu", sans-serif;
-  color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 90%);
 }
 .choices{
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
-  background-color: hsl(240, 50%, 50%);
+  background-color: hsl(200, 5%, 30%);
 }
 .choice, .selected{
   display: flex;
@@ -104,7 +101,7 @@
 .pollInfo h2{
   flex: 1;
   font-family: "Monsterrat", sans-serif;
-  color: hsl(240, 50%, 60%);
+  color: hsl(0, 0%, 90%);
 }
 .shareButton{
   width: 200px;
@@ -129,36 +126,26 @@
   font-family: "Sansation", sans-serif;
   font-size: 1.2rem;
   font-weight: 600;
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(240, 50%, 50%);
-  border: 2px solid hsl(240, 50%, 50%);
+  color: hsl(0, 0%, 90%);
+  background-color: hsl(200, 70%, 50%);
+  border: 2px solid hsl(0, 0%, 10%);
   border-radius: 10px;
   padding: 1rem;
   cursor: pointer;
 }
 
-.pollInfo .unliked{
+.pollInfo .unliked, .favorite{
   width: 100px;
   font-family: "Sansation", sans-serif;
   font-size: 1.2rem;
   color: hsl(240, 50%, 50%);
-  background-color: hsl(240, 50%, 95%);
-  border: 2px solid hsl(240, 50%, 50%);
+  background-color: hsl(200, 70%, 80%);
+  border: 2px solid hsl(0, 0%, 10%);
   border-radius: 10px;
   padding: 1rem;
   cursor: pointer;
 }
 .unliked:hover, .favorite:hover{
-  background-color: hsl(240, 50%, 90%);
+  background-color: hsl(200, 70%, 70%);
 }
-.favorite{
-  width: 100px;
-  font-family: "Sansation", sans-serif;
-  font-size: 1.2rem;
-  color: hsl(240, 50%, 50%);
-  background-color: hsl(240, 50%, 95%);
-  border: 2px solid hsl(240, 50%, 50%);
-  border-radius: 10px;
-  padding: 1rem;
-  cursor: pointer;
-}
+

@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router-dom"
-import styles from "./explore.module.css"
+import light from "./explore.module.css"
+import dark from "./exploredark.module.css"
 import { useState } from "react"
+import useUserContext from "../pollProvider"
 
 const Explorepolls = ({ poll }) => {
 
   const navigate = useNavigate()
+
+  const { theme } = useUserContext()
+
+  const styles = theme ? light : dark
 
   const [expiry, setExpiry] = useState(`Calculating Time...`)
   const [expired, setExpired] = useState(false)
@@ -38,7 +44,7 @@ const Explorepolls = ({ poll }) => {
 
         <div className={expired ? styles.pollExpired : styles.poll}>
           <h2>{poll.title}</h2>
-          <p>Time Left : {expiry === `Expired` ? <span style={{color: "hsl(0, 50%, 50%)"}}>{expiry}</span> : expiry}</p>
+          <p>Time Left : {expiry === `Expired` ? <span style={{color: "hsl(0, 50%, 70%)"}}>{expiry}</span> : expiry}</p>
           <p>{`Votes : ${poll.totalVotes}`}</p>
           <p>{`Created By : ${poll.user.username}`}</p>
 

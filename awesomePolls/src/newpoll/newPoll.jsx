@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import light from "./newPoll.module.css"
 import dark from "./newpolldark.module.css"
 import axios from "axios";
@@ -20,6 +20,21 @@ const NewPoll = () => {
   const [previewOpened, setPreviewOpened] = useState(false)
   const [title, setTitle] = useState("")
   const [askForLogin, setAskForLogin] = useState(true)
+  const [selectedExpiry, setSelectedExpiry] = useState(1)
+
+  const [width, setWidth] = useState(window.innerWidth)
+
+  function handleResize(){
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+
+  }, [])
 
   function handleAddOption(){
     const newOption = ""
@@ -48,7 +63,7 @@ const NewPoll = () => {
     const title = document.getElementById("newPollTitle").value
     const opts = options.filter(o => o !== "")
     const author = user
-    const expiry = document.getElementById("expiry").value
+    const expiry = selectedExpiry
 
     const newPoll = {
       title: title,
@@ -71,7 +86,7 @@ const NewPoll = () => {
   function showLoginOverlay(){
 
     const dialog = document.querySelector("dialog")
-    dialog.showModal()
+    dialog && dialog.showModal()
     setAskForLogin(false)
   }
 
@@ -90,7 +105,9 @@ const NewPoll = () => {
 
         <div className={styles.pollAndPreviewContainer}>
       <div className={styles.newPoll} style={{
-            transform: `${previewOpened ? "translateX(0)" : "translateX(100px)"}`
+            transform: `${previewOpened 
+              ? "translateX(0)" 
+              : width > 1000 ? "translateX(100px)" : "translateX(0)"}`
           }}>
 
         <h1>Start a New Poll</h1>
@@ -100,7 +117,7 @@ const NewPoll = () => {
           <input type="text" id="newPollTitle" onChange={handleTitleChange} />
         </div>
 
-        <ExpirySlider times={[1, 2, 3, 6, 12, 24]} />
+        <ExpirySlider times={[1, 2, 3, 6, 12, 24]} setSelectedExpiry={setSelectedExpiry}/>
 
         <div className={styles.author}>
           <h2>{user ? `Created By - ${user}` : askForLogin && showLoginOverlay()}</h2>
@@ -124,7 +141,7 @@ const NewPoll = () => {
           <button id={styles.createButton} onClick={handleCreatePoll}>Create Poll</button>
         </div>
 
-      </div>
+        </div>
 
         <PreviewPoll setPreviewOpened={setPreviewOpened} title={title} options={options} />
 

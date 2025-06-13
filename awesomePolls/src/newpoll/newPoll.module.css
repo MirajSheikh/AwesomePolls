@@ -1,6 +1,7 @@
 .pollAndPreviewContainer{
   display: flex;
   justify-content: center;
+  padding-left: 50px;
 }
 
 .newPoll{
@@ -118,5 +119,4 @@
   border: 2px solid hsl(240, 50%, 50%);
   color: hsl(0, 100%, 100%);
 }
-
 

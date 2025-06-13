@@ -86,3 +86,9 @@
 #hidePreviewButton{
   border-radius: 50px;
 }
+
+@media(max-width: 1000px){
+  .previewContainer{
+    display: none;
+  }
+}

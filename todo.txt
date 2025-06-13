@@ -1,17 +1,19 @@
+TODAY - 13/6/25
+
 Todo -->
-1. Implement Vote expiry functionality
+1. Implement Vote expiry functionality (partially done) (3)
 2. Implement the Favorites system
 3. Make a profile page
 4. Make a settings page
-5. Make a your polls page
-6. Implement poll deletion
+5. Make a my polls page   (1)
+6. Implement poll deletion(2)
 
-Task 1 (deadline - 5/6/25) -->
+Task 1 (deadline - 5/6/25) --> completed
 Overhaul design for Home/Landing Page (done)
 Overhaul design for New Polls Page
 Add a Dark theme (done only for homepage)
 Make it fully mobile friendly (done only for homepage)
-Completion Date --> []
+Completion Date --> [13/6/25] [8 days overdue]
 
 Task 2 (deadline - 10/6/25) -->
 Complete profile, your polls, favorites, and settings(optional) pages

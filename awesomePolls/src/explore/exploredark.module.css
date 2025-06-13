@@ -6,21 +6,26 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: hsl(240, 50%, 95%);
-  border-bottom: 2px solid hsl(45, 100%, 50%);
+  background: linear-gradient(90deg, hsl(200, 5%, 30%), hsl(200, 5%, 40%), hsl(200, 5%, 30%));
+  border-radius: 10px;
+  border-bottom: 2px solid hsl(0, 50%, 70%);
+  border-right: 2px solid hsl(0, 50%, 70%);
   padding: 2rem;
 }
 .pollExpired h2{
   font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
-  color: hsl(0, 50%, 50%);
+  color: hsl(0, 50%, 70%);
 }
 .pollExpired p{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
+  color: hsl(0, 0%, 90%);
 }
 
 .exploreContainer{
+  width: 800px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -38,20 +43,21 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: hsl(240, 50%, 95%);
-  border-bottom: 2px solid hsl(45, 100%, 50%);
-  border-right: 2px solid hsl(45, 100%, 50%);
+  background: linear-gradient(90deg, hsl(200, 5%, 30%), hsl(200, 5%, 40%), hsl(200, 5%, 30%));
+  border-bottom: 2px solid hsl(200, 70%, 70%);
+  border-right: 2px solid hsl(200, 70%, 70%);
   border-radius: 10px;
   padding: 2rem;
 }
 .poll h2{
   font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
-  color: hsl(240, 50%, 50%);
+  color: hsl(200, 70%, 80%);
 }
 .poll p{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
+  color: hsl(0, 0%, 90%);
 }
 .pollButtons{
   width: 100%;
@@ -60,58 +66,30 @@
 }
 .pollButtons button{
   font-family: "Sansation", sans-serif;
-  font-size: 1.5rem;
-  color: hsl(240, 50%, 40%);
-  background-color: hsl(240, 50%, 90%);
-  border: 2px solid hsl(240, 50%, 80%);
+  font-size: 1.2rem;
+  color: hsl(0, 0%, 20%);
+  background-color: hsl(200, 70%, 90%);
+  border: 2px solid hsl(0, 0%, 10%);
   border-radius: 5px;
-  padding: 1rem;
+  padding: 10px 20px;
   cursor: pointer;
   transition: border 0.1s ease, color 0.1s ease;
 }
 .pollInfoButtons{
+  width: 300px;
   display: flex;
   gap: 1rem;
 }
-#voteButton{
+.pollButtons button{
   width: 200px;
 }
-#voteButton:hover{
-  border: 2px solid hsl(240, 50%, 50%);
-  color: hsl(240, 50%, 50%);
+.pollButtons button:hover{
+  background-color: hsl(200, 70%, 80%);
 }
-#voteButton:active{
-  background-color: hsl(240, 50%, 50%);
-  border: 2px solid hsl(240, 50%, 50%);
-  color: hsl(0, 0%, 100%);
+.pollButtons button:active{
+  background-color: hsl(200, 70%, 70%);
 }
-#likeButton:hover{
-  border: 2px solid hsl(240, 50%, 50%);
-  color: hsl(240, 50%, 50%);
-}
-#likeButton:active{
-  background-color: hsl(120, 50%, 45%);
-  border: 2px solid hsl(120, 50%, 45%);
-  color: hsl(0, 0%, 100%);
-}
-#dislikeButton:hover{
-  border: 2px solid hsl(240, 50%, 50%);
-  color: hsl(240, 50%, 50%);
-}
-#dislikeButton:active{
-  background-color: hsl(0, 50%, 45%);
-  border: 2px solid hsl(0, 50%, 45%);
-  color: hsl(0, 0%, 100%);
-}
-#favoriteButton:hover{
-  border: 2px solid hsl(240, 50%, 50%);
-  color: hsl(240, 50%, 50%);
-}
-#favoriteButton:active{
-  background-color: hsl(45, 100%, 50%);
-  border: 2px solid hsl(45, 100%, 50%);
-  color: hsl(0, 0%, 100%);
-}
+
 .noPolls{
   display: flex;
   flex-direction: column;

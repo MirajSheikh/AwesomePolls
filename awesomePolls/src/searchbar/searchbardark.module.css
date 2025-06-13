@@ -29,12 +29,15 @@
   background-color: hsl(200, 5%, 50%);
 }
 .searchList{
+  position: fixed;
+  top: 50px;
+
   display: flex;
   flex-direction: column;
   width: 250px;
   max-width: 250px;
   max-height: 500px;
-  background-color: hsl(240, 50%, 90%);
+  background-color: hsl(200, 5%, 80%);
   border-radius: 5px;
   box-shadow: 5px 5px 5px hsla(240, 50%, 40%, 0.3);
 }
@@ -42,11 +45,20 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  color: hsl(240, 50%, 40%);
+  color: hsl(0, 0%, 20%);
   padding: 1rem;
 }
+.searchItem:first-child{
+  border-radius: 5px 5px 0 0;
+}
+.searchItem:last-child{
+  border-radius: 0 0 5px 5px;
+}
+.searchItem:only-child{
+  border-radius: 5px;
+}
 .searchItem:hover{
-  background-color: hsl(240, 50%, 85%);
+  background-color: hsl(200, 5%, 85%);
   cursor: pointer;
 }
 
