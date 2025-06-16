@@ -5,7 +5,7 @@ Todo -->
 2. Implement the Favorites system
 3. Make a profile page
 4. Make a settings page
-5. Make a my polls page   (1)
+5. Make a my polls page   (1) [partially done]
 6. Implement poll deletion(2)
 
 Task 1 (deadline - 5/6/25) --> completed

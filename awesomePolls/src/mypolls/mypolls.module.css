@@ -1,0 +1,90 @@
+.myPolls{
+  margin: auto;
+  padding: 100px 100px;
+}
+.myPolls h1{
+  font-family: "Fugaz One", sans-serif;
+  font-size: 3rem;
+  color: hsl(240, 50%, 50%);
+  font-weight: 500;
+  text-align: center;
+}
+.myPollsList{
+  margin: 50px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+
+.myPoll{
+  background-color: hsl(200, 70%, 90%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  transition: transform 0.2s cubic-bezier(.24,.55,.3,3);
+}
+.myPollSelected{
+  background-color: hsl(240, 50%, 90%);
+  border: 2px solid hsl(240, 50%, 50%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  transition: transform 0.2s cubic-bezier(.24,.55,.3,3);
+}
+.myPoll:hover, .myPollSelected:hover{
+  transform: translateY(-5px);
+}
+.myPoll h2, .myPollSelected h2{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.5rem;
+  color: hsl(240, 50%, 50%);
+  font-weight: 500;
+  text-align: center;
+}
+.myPollStats{
+  display: flex;
+  justify-content: space-evenly;
+}
+.myPollStats h4{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  color: hsl(240, 50%, 50%);
+  font-weight: 500;
+}
+
+
+.noPolls{
+  
+}
+.noPolls h2{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 2rem;
+  color: hsl(240, 50%, 50%);
+  font-weight: 500;
+}
+.noPolls h3{
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(240, 50%, 40%);
+  font-weight: 700;
+}
+.noPolls button{
+  font-family: "Sansation", sans-serif;
+  font-size: 1rem;
+  color: hsl(240, 50%, 50%);
+  font-weight: 500;
+  background-color: hsl(200, 70%, 80%);
+  border: 2px solid hsl(200, 70%, 70%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.noPolls button:hover{
+  background-color: hsl(200, 70%, 75%);
+}
+

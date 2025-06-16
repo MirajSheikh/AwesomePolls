@@ -8,6 +8,7 @@ import Vote from "./vote/vote"
 import { PollProvider } from "./pollProvider"
 import Login from "./login/login"
 import Navbar from "./navbar/navbar"
+import MyPolls from "./mypolls/mypolls"
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
           <Route path="/new" element={<NewPoll />} />
           <Route path="/polls" element={<Explore />} />
           <Route path="/polls/:pollId" element={<Vote />} />
-          <Route path="/mypolls"  />
+          <Route path="/mypolls" element={<MyPolls />} />
 
         </Routes>
         </PollProvider>

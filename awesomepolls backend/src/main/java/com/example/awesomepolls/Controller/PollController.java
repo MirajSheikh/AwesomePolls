@@ -68,4 +68,10 @@ public class PollController {
         List<String> titles = pollService.getAllPollTitles();
         return ResponseEntity.ok(titles);
     }
+
+    @GetMapping("/mypolls")
+    public ResponseEntity<?> getMyPolls(@RequestParam String author){
+        List<Poll> mypolls = pollService.getMyPolls(author);
+        return ResponseEntity.ok(mypolls);
+    }
 }
