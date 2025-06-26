@@ -4,7 +4,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 5%, 15%);
+  background-color: hsl(200, 5%, 8%);
   border-right: 2px solid hsl(0, 0%, 40%);
 
   padding-top: 50px;
@@ -20,10 +20,13 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 5%, 15%);
+  background-color: hsl(200, 5%, 8%);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out;
+}
+.collapsedSideBar div{
+	align-items: center;
 }
 
 .settings{
@@ -54,12 +57,16 @@
   cursor: pointer;
 }
 .settings button:hover{
-  background-color: hsl(200, 5%, 20%);
+  background-color: hsl(200, 5%, 15%);
 }
 .settings img{
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
+	border-radius: 10px;
   cursor: pointer;
+}
+.settings img:hover{
+	background-color: hsl(200, 5%, 15%);
 }
 
 @media(max-width: 700px){

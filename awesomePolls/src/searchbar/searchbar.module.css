@@ -7,8 +7,9 @@
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   background-color: hsl(200, 70%, 95%);
-  border: 2px solid hsl(240, 50%, 50%);
-  border-right: none;
+  /* border: 2px solid hsl(240, 50%, 50%); */
+  /* border-right: none; */
+	border: none;
   border-radius: 50px 0 0 50px;
   padding: 10px 20px;
 }
@@ -18,8 +19,9 @@
 .searchButton{
   font-size: 1.5rem;
   background-color: hsl(200, 70%, 95%);
-  border: 2px solid hsl(240, 50%, 50%);
-  border-left: none;
+  /* border: 2px solid hsl(240, 50%, 50%); */
+  /* border-left: none; */
+	border: none;
   border-radius: 0 50px 50px 0;
   padding: 0 1rem;
   cursor: pointer;
