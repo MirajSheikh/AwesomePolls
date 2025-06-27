@@ -8,7 +8,7 @@
   border-right: 2px solid hsl(240, 50%, 50%);
 
   padding-top: 50px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out, background-color 0s linear;
 
   text-wrap: nowrap;
   overflow: hidden;
@@ -23,7 +23,7 @@
   background-color: hsl(200, 70%, 80%);
 
   padding-top: 50px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out, background-color 0s linear;
 }
 .collapsedSideBar div{
 	align-items: center;

@@ -13,12 +13,10 @@
 
 .navLeft a{
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: "Sansation", sans-serif;
   font-weight: 800;
-  color: hsl(0, 0%, 90%);
-  background-color: hsl(240, 5%, 10%);
-  border-right: 2px solid hsl(240, 5%, 40%);
+  color: hsl(0, 0%, 100%);
   padding: 17px;
 }
 
@@ -43,11 +41,16 @@
   font-family: "Sansation", sans-serif;
   font-size: 1rem;
   color: hsl(0, 0%, 10%);
-  background-color: hsl(200, 5%, 80%);
-  border: 2px solid black;
-  border-radius: 10px;
+  background-color: hsl(200, 70%, 95%);
+  border: none;
+  border-radius: 25px;
   padding: 10px 20px;
   cursor: pointer;
+
+	transition: background-color 0.2s ease;
+}
+.navLoginButton:hover, .navLogoutButton:hover{
+  background-color: hsl(200, 70%, 90%);
 }
 
 @media(max-width: 900px){
