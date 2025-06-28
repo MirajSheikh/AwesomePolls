@@ -28,9 +28,7 @@ dialog:open{
   align-items: center;
   justify-content: center;
   background: linear-gradient(-45deg, hsl(200, 70%, 80%), hsl(200, 70%, 95%), hsl(200, 70%, 80%));
-  border: 2px solid white;
-  border-top: 2px solid hsl(200, 70%, 50%);
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 25px;
 }
 
@@ -46,12 +44,12 @@ dialog:open{
   font-size: 3rem;
   font-family: "Fugaz One", sans-serif;
   font-weight: 500;
-  color: hsl(200, 70%, 50%);
+  color: hsl(240, 50%, 50%);
 }
 .login h3{
   font-size: 1.2rem;
   font-family: "Monsterrat", sans-serif;
-  color: hsl(200, 70%, 70%);
+  color: hsl(240, 50%, 40%);
   text-align: center;
 }
 
@@ -79,12 +77,10 @@ dialog:open{
   background-color: hsl(200, 70%, 60%);
 }
 
-.userInputs{
+.login input[type=text]{
   font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
-  color: hsl(0, 0%, 10%);
-  background-color: hsl(200, 70%, 90%);
-  border: 2px solid hsl(200, 70%, 40%);
+  border: none;
   border-radius: 10px;
   padding: 10px 20px;
 }

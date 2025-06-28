@@ -28,9 +28,7 @@ dialog:open{
   align-items: center;
   justify-content: center;
   background-color: hsl(200, 5%, 10%);
-  border: 2px solid black;
-  border-top: 2px solid hsl(0, 0%, 90%);
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 25px;
 }
 
@@ -50,7 +48,7 @@ dialog:open{
 .login h3{
   font-size: 1.2rem;
   font-family: "Monsterrat", sans-serif;
-  color: hsl(0, 0%, 70%);
+  color: hsl(0, 0%, 90%);
   text-align: center;
 }
 
@@ -82,9 +80,9 @@ dialog:open{
   width: 250px;
   font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
-  color: hsl(0, 0%, 90%);
-  background-color: hsl(200, 5%, 70%);
-  border: 2px solid black;
+  color: hsl(0, 0%, 10%);
+  background-color: hsl(200, 5%, 90%);
+  border: none;
   border-radius: 10px;
   padding: 10px 20px;
 }

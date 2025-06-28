@@ -28,6 +28,7 @@
 }
 
 .navUsername{
+  max-width: 150px;
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
   color: hsl(0, 0%, 20%);

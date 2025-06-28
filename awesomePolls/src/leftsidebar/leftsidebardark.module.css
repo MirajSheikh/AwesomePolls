@@ -6,6 +6,7 @@
   flex-direction: column;
   background-color: hsl(200, 5%, 8%);
   border-right: 2px solid hsl(0, 0%, 40%);
+  box-shadow: 5px 0 10px hsla(200, 5%, 8%, 0.5);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out, background-color 0s linear;

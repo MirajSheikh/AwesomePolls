@@ -4,8 +4,9 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 70%, 80%);
+  background-color: hsl(240, 50%, 80%);
   border-right: 2px solid hsl(240, 50%, 50%);
+  box-shadow: 5px 0 10px hsla(240, 50%, 50%, 0.3);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out, background-color 0s linear;
@@ -20,7 +21,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: hsl(200, 70%, 80%);
+  background-color: hsl(240, 50%, 80%);
 
   padding-top: 50px;
   transition: all 0.2s ease-in-out, background-color 0s linear;
@@ -57,7 +58,7 @@
   cursor: pointer;
 }
 .settings button:hover{
-  background-color: hsl(200, 70%, 75%);
+  background-color: hsl(240, 50%, 85%);
 }
 .settings img{
   width: 50px;

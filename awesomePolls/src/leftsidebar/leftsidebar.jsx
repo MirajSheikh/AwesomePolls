@@ -27,7 +27,7 @@ import collapsedark from "../assets/collapsedark.svg"
 
 const LeftSideBar = () => {
 
-	const { theme, setUser } = useUserContext()
+	const { theme, user, setUser } = useUserContext()
 
 	const navigate = useNavigate()
 
@@ -65,7 +65,8 @@ const LeftSideBar = () => {
 			<div className={styles.settings}>
 				<div
 					onClick={() => setCollapsed(!collapsed)}
-					style={{ justifyContent: `${collapsed ? "start" : "end"}` }}>
+					style={{ justifyContent: `${collapsed ? "start" : "end"}`,
+									 paddingRight: `${collapsed ? "0" : "10px"}`}}>
 					<img src={collapsed
 						? theme ? expand : expanddark
 						: theme ? collapse : collapsedark
@@ -78,14 +79,15 @@ const LeftSideBar = () => {
 				<div>{collapsed ? <img src={theme ? settings : settingsdark} /> : <button>Settings</button>}</div>
 				<div>{collapsed ? <img src={theme ? favorites : favoritesdark} /> : <button>Favorites</button>}</div>
 				<div>{collapsed ? <img src={theme ? mostvoted : mostvoteddark} /> : <button>Most Voted Polls</button>}</div>
-				<div>{collapsed
+				{user && <div onClick={() => {
+					navigate("/")
+					setUser(null)
+				}}>
+					{collapsed
 					? <img src={theme ? logout : logoutdark} />
-					: <button onClick={() => {
-						setUser(null)
-						navigate("/")
-					}
-					}>Logout</button>}
+					: <button>Logout</button>}
 				</div>
+				}
 			</div>
 
 		</div>

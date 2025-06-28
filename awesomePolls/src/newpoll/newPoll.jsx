@@ -19,7 +19,6 @@ const NewPoll = () => {
   const [message, setMessage] = useState(null)
   const [previewOpened, setPreviewOpened] = useState(false)
   const [title, setTitle] = useState("")
-  const [askForLogin, setAskForLogin] = useState(true)
   const [selectedExpiry, setSelectedExpiry] = useState(1)
 
   const [width, setWidth] = useState(window.innerWidth)
@@ -118,10 +117,6 @@ const NewPoll = () => {
         </div>
 
         <ExpirySlider times={[1, 2, 3, 6, 12, 24]} setSelectedExpiry={setSelectedExpiry}/>
-
-        <div className={styles.author}>
-          <h2>{user ? `Created By - ${user}` : askForLogin && showLoginOverlay()}</h2>
-        </div>
 
         <div className={styles.pollChoices}>
           <h2>Choices</h2>

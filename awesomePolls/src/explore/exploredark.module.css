@@ -59,36 +59,57 @@
   font-size: 1.2rem;
   color: hsl(0, 0%, 90%);
 }
-.pollButtons{
+
+.poll .pollButtons, .pollExpired .pollButtons{
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.pollButtons button{
+.poll .pollButtons button{
+  width: 200px;
   font-family: "Sansation", sans-serif;
   font-size: 1.2rem;
-  color: hsl(0, 0%, 20%);
-  background-color: hsl(200, 70%, 90%);
-  border: 2px solid hsl(0, 0%, 10%);
+  color: hsl(240, 50%, 40%);
+  background-color: hsl(200, 70%, 85%);
+  border: none;
   border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
-  transition: border 0.1s ease, color 0.1s ease;
+  transition: background-color 0.2s ease;
 }
+.pollExpired .pollButtons button{
+  width: 200px;
+  font-family: "Sansation", sans-serif;
+  font-size: 1.2rem;
+  color: hsl(0, 50%, 50%);
+  background-color: hsl(0, 50%, 90%);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
 .pollInfoButtons{
   width: 300px;
   display: flex;
   gap: 1rem;
 }
-.pollButtons button{
-  width: 200px;
-}
-.pollButtons button:hover{
+
+.poll .pollButtons button:hover{
   background-color: hsl(200, 70%, 80%);
 }
-.pollButtons button:active{
+.poll .pollButtons button:active{
   background-color: hsl(200, 70%, 70%);
 }
+.pollExpired .pollButtons button:hover{
+  background-color: hsl(0, 50%, 75%);
+}
+.pollExpired .pollButtons button:active{
+  background-color: hsl(0, 50%, 70%);
+}
+
 
 .noPolls{
   display: flex;

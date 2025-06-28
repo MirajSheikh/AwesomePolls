@@ -40,18 +40,19 @@
   gap: 50px;
 }
 .homeButtons button{
+  width: 150px;
   font-size: 1.2rem;
   font-family: "Sansation", sans-serif;
   color: hsl(0, 0%, 90%);
-  background-color: hsl(240, 50%, 70%);
-  border: 2px solid hsl(240, 50%, 50%);
-  border-radius: 10px;
+  background-color: hsl(200, 70%, 60%);
+  border: none;
+  border-radius: 50px;
   padding: 15px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 .homeButtons button:hover{
-  background-color: hsl(240, 50%, 75%);
+  background-color: hsl(200, 70%, 50%);
 }
 .homeButtons button:active{
   background-color: hsl(240, 50%, 50%);

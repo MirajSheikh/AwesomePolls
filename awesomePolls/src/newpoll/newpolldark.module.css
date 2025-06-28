@@ -1,4 +1,5 @@
 .pollAndPreviewContainer{
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   padding-left: 50px;
@@ -11,7 +12,7 @@
   flex-direction: column;
   gap: 2rem;
   background-color: hsl(200, 5%, 15%);
-  padding: 100px 50px;
+  padding: 100px 50px 50px 50px;
 
   transition: transform 0.2s ease;
 }
@@ -37,9 +38,9 @@
 .newPoll input[type=text]{
   font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
-  color: hsl(0, 0%, 90%);
-  background-color: hsl(200, 5%, 40%);
-  border: 2px solid hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 10%);
+  background-color: hsl(200, 5%, 90%);
+  border: none;
   border-radius: 10px;
   padding: 10px 20px;
   overflow: hidden;
@@ -84,10 +85,10 @@
   font-size: 1.2rem;
   background-color: hsl(200, 5%, 80%);
   cursor: pointer;
-  border: 2px solid hsl(0, 0%, 10%);
+  border: none;
   border-radius: 50%;
   padding: 10px;
-  transition: background-color 0.1s ease, border 0.1s ease;
+  transition: background-color 0.1s ease;
 }
 .option button:hover{
   background-color: hsl(0, 50%, 70%);
@@ -100,12 +101,12 @@
   font-size: 1.2rem;
   font-family: "Sansation", sans-serif;
   color: hsl(0, 0%, 10%);
-  border: 2px solid hsl(0, 0%, 10%);
+  border: none;
   border-radius: 5px;
   background-color: hsl(200, 70%, 80%);
   padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.1s ease, border 0.1s ease, color 0.1s ease;
+  transition: background-color 0.1s ease, color 0.1s ease;
 }
 #addButton:hover{
   color: hsl(0, 0%, 90%);
