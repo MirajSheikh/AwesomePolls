@@ -86,7 +86,6 @@ const NewPoll = () => {
 
     const dialog = document.querySelector("dialog")
     dialog && dialog.showModal()
-    setAskForLogin(false)
   }
 
   return(

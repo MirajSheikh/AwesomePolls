@@ -18,6 +18,7 @@ const MyPolls = () => {
 
   const [myPolls, setMyPolls] = useState([])
   const [loading, setLoading] = useState(true)
+  const [updating, setUpdating] = useState(false)
 
   useEffect(() => {
 
@@ -40,7 +41,7 @@ const MyPolls = () => {
 
     getMyPolls()
 
-  }, [user])
+  }, [user, updating])
 
   return(
 
@@ -61,7 +62,7 @@ const MyPolls = () => {
               {myPolls.map((poll, i) => (
 
                 <div key={i}>
-                  <MyPoll styles={styles} poll={poll} />
+                  <MyPoll styles={styles} poll={poll} updating={updating} setUpdating={setUpdating} />
                 </div>
 
               ))}

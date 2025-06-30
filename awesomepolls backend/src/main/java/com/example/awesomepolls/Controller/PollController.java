@@ -1,5 +1,6 @@
 package com.example.awesomepolls.Controller;
 
+import com.example.awesomepolls.DTO.LikeDislikeDTO;
 import com.example.awesomepolls.DTO.NewPoll;
 import com.example.awesomepolls.Model.Poll;
 import com.example.awesomepolls.Model.User;
@@ -73,5 +74,23 @@ public class PollController {
     public ResponseEntity<?> getMyPolls(@RequestParam String author){
         List<Poll> mypolls = pollService.getMyPolls(author);
         return ResponseEntity.ok(mypolls);
+    }
+
+    @PostMapping("/like")
+    public ResponseEntity<?> like(@RequestBody LikeDislikeDTO likeDislikeDTO){
+        pollService.like(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
+        return ResponseEntity.ok("Liked");
+    }
+
+    @PostMapping("/dislike")
+    public ResponseEntity<?> dislike(@RequestBody LikeDislikeDTO likeDislikeDTO){
+        pollService.dislike(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
+        return ResponseEntity.ok("Disliked");
+    }
+
+    @DeleteMapping("/{pollId}")
+    public ResponseEntity<?> deletePoll(@PathVariable Long pollId){
+        pollService.deletePoll(pollId);
+        return ResponseEntity.ok("Successfully Removed");
     }
 }

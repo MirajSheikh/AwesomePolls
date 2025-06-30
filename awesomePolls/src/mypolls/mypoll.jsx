@@ -1,7 +1,10 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-const MyPoll = ({ styles, poll }) => {
+const MyPoll = ({ styles, poll, updating, setUpdating }) => {
+
+  const navigate = useNavigate()
 
   const [showOptions, setShowOptions] = useState(false)
 
@@ -9,17 +12,8 @@ const MyPoll = ({ styles, poll }) => {
 
     //need to show delete confirmation window on click
     const resp = await axios.delete(`http://localhost:8080/poll/${poll.id}`)
-
-    return(
-
-      <div className={styles.deleteConfirmation}>
-        <h2>Delete This Poll</h2>
-        <h3>This Action cannot of Reversed</h3>
-        <button>Yes</button>
-        <button>No</button>
-      </div>
-
-    )
+    setUpdating(!updating)
+    console.log(resp.data)
 
   }
 
@@ -45,8 +39,8 @@ const MyPoll = ({ styles, poll }) => {
 
           <h2>{poll.title}</h2>
           <div>
-            <button>Open</button>
-            <button>Delete</button>
+            <button onClick={() => navigate(`/polls/${poll.id}`)}>Open</button>
+            <button onClick={handlePollDelete}>Delete</button>
             <button>Info</button>
             <button onClick={() => setShowOptions(false)}>Cancel</button>
           </div>

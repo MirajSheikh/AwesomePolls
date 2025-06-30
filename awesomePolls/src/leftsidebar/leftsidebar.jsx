@@ -72,12 +72,12 @@ const LeftSideBar = () => {
 						: theme ? collapse : collapsedark
 					} />
 				</div>
-				<div>{collapsed ? <img src={theme ? profile : profiledark} /> : <button>Profile</button>}</div>
-				<div onClick={() => navigate("/mypolls")}>{collapsed ? <img src={theme ? mypolls : mypollsdark} /> : <button>My Polls</button>}</div>
+				{user && <div>{collapsed ? <img src={theme ? profile : profiledark} /> : <button>Profile</button>}</div>}
+				{user && <div onClick={() => navigate("/mypolls")}>{collapsed ? <img src={theme ? mypolls : mypollsdark} /> : <button>My Polls</button>}</div>}
 				<div onClick={() => navigate("/polls")}>{collapsed ? <img src={theme ? explore : exploredark} /> : <button>Explore</button>}</div>
 				<div onClick={() => navigate("/new")}>{collapsed ? <img src={theme ? newpoll : newpolldark} /> : <button>New Poll</button>}</div>
 				<div>{collapsed ? <img src={theme ? settings : settingsdark} /> : <button>Settings</button>}</div>
-				<div>{collapsed ? <img src={theme ? favorites : favoritesdark} /> : <button>Favorites</button>}</div>
+				{user && <div>{collapsed ? <img src={theme ? favorites : favoritesdark} /> : <button>Favorites</button>}</div>}
 				<div>{collapsed ? <img src={theme ? mostvoted : mostvoteddark} /> : <button>Most Voted Polls</button>}</div>
 				{user && <div onClick={() => {
 					navigate("/")

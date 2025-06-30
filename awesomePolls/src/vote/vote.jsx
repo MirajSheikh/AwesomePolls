@@ -8,6 +8,7 @@ import SockJS from "sockjs-client";
 import useUserContext from "../pollProvider";
 import { motion } from "framer-motion";
 import BouncingDots from "../spinner/bouncingdots";
+import LeftSideBar from "../leftsidebar/leftsidebar";
 
 const Vote = () => {
 
@@ -115,6 +116,11 @@ const Vote = () => {
       return 
     }
 
+    if(!user){
+      document.querySelector('dialog').showModal()
+      return
+    }
+
     if(votedOption === optionIndex){
       return
     }
@@ -149,6 +155,12 @@ const Vote = () => {
   }
 
   function handleLike(){
+
+    if(!user){
+      document.querySelector('dialog').showModal()
+      return
+    }
+
     const likeDislikeDTO = {
       username: user,
       pollId: parseInt(pollId)
@@ -162,6 +174,12 @@ const Vote = () => {
   }
 
   function handleDislike(){
+
+    if(!user){
+      document.querySelector('dialog').showModal()
+      return
+    }
+
     const likeDislikeDTO = {
       username: user,
       pollId: parseInt(pollId)
@@ -178,6 +196,7 @@ const Vote = () => {
   return(
 
     <>
+      <LeftSideBar />
     <motion.div
     initial={{opacity: 0}} 
     animate={{opacity: 1}}
@@ -192,7 +211,6 @@ const Vote = () => {
       : poll && <div className={styles.votePage}>
 
       <button id={styles.backToExplore} onClick={() => navigate("/polls")}>Back To Explore</button>
-      <h2>Voting as {`${user}`}</h2>
 
       <div className={styles.choices}>
         <h1>{poll && poll.title}</h1>
