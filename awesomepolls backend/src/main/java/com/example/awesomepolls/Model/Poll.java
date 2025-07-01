@@ -21,7 +21,6 @@ public class Poll {
 
     private Long likes;
     private Long dislikes;
-    private boolean favorite;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> options;
@@ -35,12 +34,12 @@ public class Poll {
     private Long totalVotes;
 
     private LocalDateTime expiry;
+    private boolean expired;
 
-    public Poll(User user, Long likes, Long dislikes, boolean favorite, List<Long> voteCounts, Long totalVotes) {
+    public Poll(User user, Long likes, Long dislikes, List<Long> voteCounts, Long totalVotes) {
         this.user = user;
         this.likes = likes;
         this.dislikes = dislikes;
-        this.favorite = favorite;
         this.voteCounts = voteCounts;
         this.totalVotes = totalVotes;
     }
@@ -51,9 +50,10 @@ public class Poll {
         this.options = options;
     }
 
-    public Poll(LocalDateTime expiry, List<String> voters){
+    public Poll(LocalDateTime expiry, boolean expired, List<String> voters){
         this.expiry = expiry;
         this.voters = voters;
+        this.expired = expired;
     }
 
     public Poll() {
@@ -99,14 +99,6 @@ public class Poll {
         this.dislikes = dislikes;
     }
 
-    public boolean isFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
-    }
-
     public List<Long> getVoteCounts() {
         return voteCounts;
     }
@@ -149,5 +141,11 @@ public class Poll {
 
     public void setVoters(List<String> voters) {
         this.voters = voters;
+    }
+    public boolean isExpired(){
+        return expired;
+    }
+    public void setExpired(boolean expired){
+        this.expired = expired;
     }
 }

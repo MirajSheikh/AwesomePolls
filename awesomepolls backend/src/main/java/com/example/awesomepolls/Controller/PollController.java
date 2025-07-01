@@ -42,7 +42,7 @@ public class PollController {
 
         poll.setLikes(0L);
         poll.setDislikes(0L);
-        poll.setFavorite(false);
+        poll.setExpired(false);
         poll.setTotalVotes(0L);
 
         poll.setVoteCounts(new ArrayList<>(Collections.nCopies(newPoll.getOptions().size(), 0L)));
@@ -78,14 +78,14 @@ public class PollController {
 
     @PostMapping("/like")
     public ResponseEntity<?> like(@RequestBody LikeDislikeDTO likeDislikeDTO){
-        pollService.like(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
-        return ResponseEntity.ok("Liked");
+        boolean liked = pollService.like(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
+        return liked ? ResponseEntity.ok("Liked") : ResponseEntity.ok("Poll has Expired!");
     }
 
     @PostMapping("/dislike")
     public ResponseEntity<?> dislike(@RequestBody LikeDislikeDTO likeDislikeDTO){
-        pollService.dislike(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
-        return ResponseEntity.ok("Disliked");
+        boolean disliked = pollService.dislike(likeDislikeDTO.getPollId(), likeDislikeDTO.getUsername());
+        return disliked ? ResponseEntity.ok("Disliked") : ResponseEntity.ok("Poll has Expired!");
     }
 
     @DeleteMapping("/{pollId}")

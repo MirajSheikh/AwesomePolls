@@ -9,6 +9,7 @@ import com.example.awesomepolls.Repository.LikeDislikeRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,10 +53,17 @@ public class PollService {
         return pollRepository.findAllByUser(user);
     }
 
-    public void like(Long pollId, String username){
+    public boolean like(Long pollId, String username){
+
         User user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
+
+        if(LocalDateTime.now().isAfter(poll.getExpiry())){
+            poll.setExpired(true);
+            pollRepository.save(poll);
+            return false;
+        }
 
         //create new LikeDislike record
         if(likeDislike == null){
@@ -95,12 +103,19 @@ public class PollService {
         }
 
         pollRepository.save(poll);
+        return true;
     }
 
-    public void dislike(Long pollId, String username){
+    public boolean dislike(Long pollId, String username){
         User user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
+
+        if(LocalDateTime.now().isAfter(poll.getExpiry())){
+            poll.setExpired(true);
+            pollRepository.save(poll);
+            return false;
+        }
 
         //create new LikeDislike record
         if(likeDislike == null){
@@ -139,6 +154,7 @@ public class PollService {
         }
 
         pollRepository.save(poll);
+        return true;
     }
 
 

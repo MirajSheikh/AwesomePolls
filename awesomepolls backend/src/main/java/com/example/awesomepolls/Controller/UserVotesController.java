@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController
@@ -31,6 +32,12 @@ public class UserVotesController {
     public ResponseEntity<?> recordVote(@RequestBody UserVotesDTO userVotesDTO){
         User user = userRepository.findByUsername(userVotesDTO.getUsername());
         Poll poll = pollRepository.findById(userVotesDTO.getPollId()).orElseThrow();
+
+        if(LocalDateTime.now().isAfter(poll.getExpiry())){
+            poll.setExpired(true);
+            pollRepository.save(poll);
+            return ResponseEntity.ok("Poll has Expired!");
+        }
 
         Optional<UserVotes> uv = userVotesRepository.findByUserAndPoll(user, poll);
         if(uv.isPresent()){

@@ -25,6 +25,8 @@ const Vote = () => {
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
 
+  const [expired, setExpired] = useState(false)
+
   const navigate = useNavigate();
 
   //fetch poll
@@ -44,6 +46,7 @@ const Vote = () => {
       setTimeout(() => {
         setLoadingPoll(false)
         setPoll(res.data)
+        setExpired(res.data.isExpired())
       }, Math.max(0, minWait - elapsed))
 
     }
@@ -111,6 +114,11 @@ const Vote = () => {
 
   async function handleVote(optionIndex){
 
+    if(expired){
+      console.log("Poll Expired!!!")
+      return
+    }
+
     if(!currentClient || !currentClient.connected){ 
       console.log("client not connected")
       return 
@@ -156,6 +164,11 @@ const Vote = () => {
 
   function handleLike(){
 
+    if(expired){
+      console.log("Poll Expired!!!")
+      return
+    }
+
     if(!user){
       document.querySelector('dialog').showModal()
       return
@@ -174,6 +187,11 @@ const Vote = () => {
   }
 
   function handleDislike(){
+
+    if(expired){
+      console.log("Poll Expired!!!")
+      return
+    }
 
     if(!user){
       document.querySelector('dialog').showModal()

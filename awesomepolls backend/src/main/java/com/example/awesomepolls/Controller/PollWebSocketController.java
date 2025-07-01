@@ -12,14 +12,12 @@ import com.example.awesomepolls.Repository.UserRepository;
 import com.example.awesomepolls.Repository.UserVotesRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PollWebSocketController {
@@ -67,7 +65,6 @@ public class PollWebSocketController {
         return poll;
     }
 
-//    needs a lot more work
     @MessageMapping("/like")
     @SendTo("/topic/poll-updates")
     public Poll handleLike(@Payload LikeDislikeDTO likeDislikeDTO){
