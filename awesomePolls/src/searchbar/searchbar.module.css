@@ -2,14 +2,12 @@
   display: flex;
 }
 .search input[type=text]{
-  width: 30vw;
+  width: 400px;
   font-size: 1rem;
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   background-color: hsl(200, 70%, 95%);
-  /* border: 2px solid hsl(240, 50%, 50%); */
-  /* border-right: none; */
-	border: none;
+  border: none;
   border-radius: 50px 0 0 50px;
   padding: 10px 20px;
 }
@@ -19,9 +17,7 @@
 .searchButton{
   font-size: 1.5rem;
   background-color: hsl(200, 70%, 95%);
-  /* border: 2px solid hsl(240, 50%, 50%); */
-  /* border-left: none; */
-	border: none;
+  border: none;
   border-radius: 0 50px 50px 0;
   padding: 0 1rem;
   cursor: pointer;
@@ -31,12 +27,11 @@
 }
 .searchList{
   position: fixed;
-  top: 50px;
 
+  width: 500px;
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
-  width: 250px;
-  max-width: 250px;
   max-height: 500px;
   background-color: hsl(200, 70%, 90%);
   border-radius: 5px;
@@ -63,4 +58,10 @@
   cursor: pointer;
 }
 
+@media(max-width: 800px){
 
+  .search input[type=text]{
+    width: 200px;
+  }
+
+}

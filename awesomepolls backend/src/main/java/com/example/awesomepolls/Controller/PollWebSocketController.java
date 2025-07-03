@@ -61,6 +61,10 @@ public class PollWebSocketController {
             }
         }
 
+        if(voteCounts.get(vote.getOptionIndex()) >= voteCounts.get(poll.getWinner())){
+            poll.setWinner(vote.getOptionIndex());
+        }
+
         pollRepository.save(poll);
         return poll;
     }

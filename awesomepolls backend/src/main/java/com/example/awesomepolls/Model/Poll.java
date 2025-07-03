@@ -35,6 +35,7 @@ public class Poll {
 
     private LocalDateTime expiry;
     private boolean expired;
+    private int winner = 0;
 
     public Poll(User user, Long likes, Long dislikes, List<Long> voteCounts, Long totalVotes) {
         this.user = user;
@@ -44,10 +45,11 @@ public class Poll {
         this.totalVotes = totalVotes;
     }
 
-    public Poll(Long id, String title, List<String> options) {
+    public Poll(Long id, String title, List<String> options, int winner) {
         this.id = id;
         this.title = title;
         this.options = options;
+        this.winner = winner;
     }
 
     public Poll(LocalDateTime expiry, boolean expired, List<String> voters){
@@ -147,5 +149,11 @@ public class Poll {
     }
     public void setExpired(boolean expired){
         this.expired = expired;
+    }
+    public int getWinner(){
+        return winner;
+    }
+    public void setWinner(int winner){
+        this.winner = winner;
     }
 }

@@ -60,4 +60,10 @@
   cursor: pointer;
 }
 
+@media(max-width: 800px){
 
+  .search input[type=text]{
+    width: 200px;
+  }
+
+}

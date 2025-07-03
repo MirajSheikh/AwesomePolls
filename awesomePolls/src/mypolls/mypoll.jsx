@@ -1,12 +1,14 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Info from "../info/info"
 
 const MyPoll = ({ styles, poll, updating, setUpdating }) => {
 
   const navigate = useNavigate()
 
   const [showOptions, setShowOptions] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
 
   async function handlePollDelete(){
 
@@ -19,38 +21,47 @@ const MyPoll = ({ styles, poll, updating, setUpdating }) => {
 
   return(
 
-    <div className={styles.myPoll}>
+    <>
 
-      {!showOptions 
-      ? 
-        <div className={styles.front}>
+      {showInfo && <Info poll={poll} setShowInfo={setShowInfo} />}
 
-          <h2>{poll.title}</h2>
-          <div className={styles.myPollStats}>
-            <h4>{poll.totalVotes} Votes</h4>
-            <h4>{poll.likes}👍🏻</h4>
-            <h4>{poll.dislikes}👎🏻</h4>
+      <div className={styles.myPoll}>
+
+        {!showOptions 
+        ? 
+          <div className={styles.front}>
+
+            <h2>{poll.title}</h2>
+            <div className={styles.myPollStats}>
+              <h4>{poll.totalVotes} Votes</h4>
+              <h4>{poll.likes}👍🏻</h4>
+              <h4>{poll.dislikes}👎🏻</h4>
+            </div>
+            <button onClick={() => setShowOptions(true)}>Options</button>
+
           </div>
-          <button onClick={() => setShowOptions(true)}>Options</button>
+        : 
+          <div className={styles.back}>
 
-        </div>
-      : 
-        <div className={styles.back}>
+            <h2>{poll.title}</h2>
+            <div>
+              <button onClick={() => navigate(`/polls/${poll.id}`)}>Open</button>
+              <button onClick={handlePollDelete}>Delete</button>
+              <button onClick={() => {
+                setShowInfo(true)
+                setShowOptions(false)
+              }}>Info</button>
+              <button onClick={() => setShowOptions(false)}>Cancel</button>
+            </div>
 
-          <h2>{poll.title}</h2>
-          <div>
-            <button onClick={() => navigate(`/polls/${poll.id}`)}>Open</button>
-            <button onClick={handlePollDelete}>Delete</button>
-            <button>Info</button>
-            <button onClick={() => setShowOptions(false)}>Cancel</button>
+
           </div>
+        }
 
 
-        </div>
-      }
+      </div>
 
-
-    </div>
+    </>
 
   )
 

@@ -34,10 +34,10 @@ const Navbar = () => {
 
         <div className={styles.navRight}>
           {user ? <h3 className={styles.navUsername}>{user}</h3> : <button className={styles.navLoginButton} onClick={showLoginOverlay}>Login</button>}
-          <button className={styles.navLogoutButton} onClick={() => {
+          {user && <button className={styles.navLogoutButton} onClick={() => {
             setUser(null)
             navigate("/")
-          }}>Logout</button>
+          }}>Logout</button>}
           <ThemeToggle />
         </div>
 

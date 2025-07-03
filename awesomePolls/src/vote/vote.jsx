@@ -46,7 +46,7 @@ const Vote = () => {
       setTimeout(() => {
         setLoadingPoll(false)
         setPoll(res.data)
-        setExpired(res.data.isExpired())
+        setExpired(res.data.expired)
       }, Math.max(0, minWait - elapsed))
 
     }
@@ -164,11 +164,6 @@ const Vote = () => {
 
   function handleLike(){
 
-    if(expired){
-      console.log("Poll Expired!!!")
-      return
-    }
-
     if(!user){
       document.querySelector('dialog').showModal()
       return
@@ -187,11 +182,6 @@ const Vote = () => {
   }
 
   function handleDislike(){
-
-    if(expired){
-      console.log("Poll Expired!!!")
-      return
-    }
 
     if(!user){
       document.querySelector('dialog').showModal()
@@ -214,7 +204,7 @@ const Vote = () => {
   return(
 
     <>
-      <LeftSideBar />
+      {!loadingPoll && <LeftSideBar />}
     <motion.div
     initial={{opacity: 0}} 
     animate={{opacity: 1}}

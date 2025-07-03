@@ -59,11 +59,11 @@ public class PollService {
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
 
-        if(LocalDateTime.now().isAfter(poll.getExpiry())){
-            poll.setExpired(true);
-            pollRepository.save(poll);
-            return false;
-        }
+        //if(LocalDateTime.now().isAfter(poll.getExpiry())){
+        //    poll.setExpired(true);
+        //    pollRepository.save(poll);
+        //    return false;
+        //}
 
         //create new LikeDislike record
         if(likeDislike == null){
@@ -111,11 +111,11 @@ public class PollService {
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
 
-        if(LocalDateTime.now().isAfter(poll.getExpiry())){
-            poll.setExpired(true);
-            pollRepository.save(poll);
-            return false;
-        }
+        //if(LocalDateTime.now().isAfter(poll.getExpiry())){
+        //    poll.setExpired(true);
+        //    pollRepository.save(poll);
+        //    return false;
+        //}
 
         //create new LikeDislike record
         if(likeDislike == null){

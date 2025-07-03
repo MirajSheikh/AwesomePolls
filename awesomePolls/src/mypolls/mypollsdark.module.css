@@ -31,7 +31,7 @@
 
 .myPoll h2{
   font-family: "Ubuntu", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: hsl(200, 70%, 80%);
   font-weight: 500;
 }
@@ -66,10 +66,11 @@
   padding: 10px 20px;
   cursor: pointer;
 
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .front button:hover{
-  background-color: hsl(200, 70%, 70%);
+  color: hsl(200, 70%, 40%);
+  background-color: hsl(200, 70%, 80%);
 }
 
 .back{
@@ -95,10 +96,11 @@
   padding: 10px 20px;
   cursor: pointer;
 
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .back button:hover{
-  background-color: hsl(200, 70%, 70%);
+  color: hsl(200, 70%, 40%);
+  background-color: hsl(200, 70%, 80%);
 }
 
 

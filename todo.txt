@@ -1,12 +1,16 @@
-LAST EDITED - 1/7/25
+LAST EDITED - 3/7/25
 
 Todo -->
-1. Implement Vote expiry functionality (partially done)(0.5)
-2. Implement the Favorites system
-3. Make a profile page (2)
-4. Make a settings page(3)
-6. Poll Info in MyPolls(1)
+2. Implement the Favorites system(2)
+3. Mobile Friendly?
 7. Add an animation for deleting poll(1.5)
+8. Implement Sharing Feature
+9. Sharing using QR code (to make it more easily accessible)
+10. User verification via e-mail or phone
+11. Implement a better toast/notification (abhi wala simply sucks)
+12. Make some missing icons
+13. Show the highest voted option somewhere easy to see.
+14. Optional -> highlight the options in % of their no. of votes in votes page
 
 
 KNOWN BUGS
