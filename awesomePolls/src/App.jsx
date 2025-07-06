@@ -9,6 +9,7 @@ import { PollProvider } from "./pollProvider"
 import Login from "./login/login"
 import Navbar from "./navbar/navbar"
 import MyPolls from "./mypolls/mypolls"
+import Signin from "./signin/signin"
 
 function App() {
 
@@ -20,15 +21,16 @@ function App() {
         <PollProvider>
           <Login />
           <Navbar />
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<Home />} />
-          <Route path="/new" element={<NewPoll />} />
-          <Route path="/polls" element={<Explore />} />
-          <Route path="/polls/:pollId" element={<Vote />} />
-          <Route path="/mypolls" element={<MyPolls />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<NewPoll />} />
+            <Route path="/polls" element={<Explore />} />
+            <Route path="/polls/:pollId" element={<Vote />} />
+            <Route path="/mypolls" element={<MyPolls />} />
+            <Route path="/signin" element={<Signin />} />
 
-        </Routes>
+          </Routes>
         </PollProvider>
 
       </BrowserRouter>
