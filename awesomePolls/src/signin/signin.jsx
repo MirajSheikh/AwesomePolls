@@ -34,8 +34,8 @@ const Signin = () => {
 
     <div style={{marginTop: `100px`}}>
 
-      <input type="text" id="username1" onChange={handleUsernameChange} />
-      <input type="password" id="password1" onChange={handlePasswordChange} />
+      <input type="text" id="username1" onChange={handleUsernameChange} placeholder="username"/>
+      <input type="password" id="password1" onChange={handlePasswordChange} placeholder="password" />
       <button onClick={handleSignin}>Sign In</button>
 
     </div>
