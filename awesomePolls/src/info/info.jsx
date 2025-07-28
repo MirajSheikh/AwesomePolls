@@ -54,7 +54,9 @@ const Info = ({ poll, setShowInfo }) => {
   return(
 
     <div id="infoOverlay" className={styles.infoOverlay} ref={infoRef}>
-      <motion.div initial={{opacity: 0}} transition={{duration: 0.3}} animate={{opacity: 1}} >
+      <motion.div 
+        style={{width: `100%`}} 
+        initial={{opacity: 0}} transition={{duration: 0.3}} animate={{opacity: 1}} >
 
         <h1>{poll.title}</h1>
 

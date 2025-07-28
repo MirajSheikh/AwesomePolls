@@ -2,10 +2,10 @@ package com.example.awesomepolls.Controller;
 
 import com.example.awesomepolls.DTO.UserVotesDTO;
 import com.example.awesomepolls.Model.Poll;
-import com.example.awesomepolls.Model.User;
 import com.example.awesomepolls.Model.UserVotes;
+import com.example.awesomepolls.Model.Users;
 import com.example.awesomepolls.Repository.PollRepository;
-import com.example.awesomepolls.Repository.UserRepository;
+import com.example.awesomepolls.Repository.UserRepo;
 import com.example.awesomepolls.Repository.UserVotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +23,14 @@ public class UserVotesController {
     private UserVotesRepository userVotesRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     @Autowired
     private PollRepository pollRepository;
 
     @PostMapping
     public ResponseEntity<?> recordVote(@RequestBody UserVotesDTO userVotesDTO){
-        User user = userRepository.findByUsername(userVotesDTO.getUsername());
+        Users user = userRepository.findByUsername(userVotesDTO.getUsername());
         Poll poll = pollRepository.findById(userVotesDTO.getPollId()).orElseThrow();
 
         if(LocalDateTime.now().isAfter(poll.getExpiry())){
@@ -61,7 +61,7 @@ public class UserVotesController {
 
     @GetMapping("/vote")
     public ResponseEntity<?> getVoteRecord(@RequestParam String username, @RequestParam Long pollId){
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         Optional<UserVotes> uv = userVotesRepository.findByUserAndPoll(user, poll);
         return ResponseEntity.ok(uv);

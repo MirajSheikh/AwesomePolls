@@ -1,12 +1,16 @@
 import light from "./searchbar.module.css"
 import dark from "./searchbardark.module.css"
-import axios from "axios"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import useUserContext from "../pollProvider"
 
-const SearchBar = ({ setInput, setSearched }) => {
+import axiosClient from "../axiosClient"
+import { useNavigate } from "react-router-dom"
+
+const SearchBar = () => {
 
   const { theme } = useUserContext()
+
+  const navigate = useNavigate()
 
   const styles = theme ? light : dark
 
@@ -38,7 +42,7 @@ const SearchBar = ({ setInput, setSearched }) => {
 
     var polls = []
 
-    axios.get(`http://localhost:8080/poll/titles`)
+    axiosClient.get(`poll/titles`)
     .then(response => {
         polls = response.data
 
@@ -58,37 +62,39 @@ const SearchBar = ({ setInput, setSearched }) => {
   function handleListItemClick(item){
     document.getElementById("searchBar").value = item
     setSearchResult([])
+    handleSearch()
   }
 
   function handleSearch(){
-    setSearched(true)
-    setInput(document.getElementById("searchBar").value)
+    const search = document.getElementById("searchBar").value
+    if(search === ""){
+      return
+    }
+    document.getElementById("searchBar").value = ""
+    navigate(`/polls?search=${search}`)
   }
-
-
 
   return(
 
-    <div className={styles.searchbar}>
-
       <div className={styles.search}>
+
         <input type="text" id="searchBar" placeholder="Search..." autoComplete="off" onChange={handleOnSearchInputChange} ref={searchBarRef} ></input>
         <button className={styles.searchButton} onClick={handleSearch}>🔍</button>
-      </div>
-      
-        {searchResult.length > 0 && (
-        <div className={styles.searchList} ref={searchListRef}>
 
-          {searchResult.map((item, i) => (
-            i < 5 && <h3 key={i} className={styles.searchItem} onClick={() => handleListItemClick(item)}>  
-              {item}
-            </h3>))}
+      {searchResult.length > 0 && (
+      <div className={styles.searchList} ref={searchListRef}>
+
+        {searchResult.map((item, i) => (
+          i < 5 && <h3 key={i} className={styles.searchItem} onClick={() => handleListItemClick(item)}>  
+            {item}
+          </h3>))}
 
         </div>
       )}
 
+      </div>
 
-    </div>
+
 
   )
 

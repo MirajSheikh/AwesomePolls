@@ -1,5 +1,7 @@
 package com.example.awesomepolls.Config;
 
+import com.example.awesomepolls.Security.JwtHandshakeInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -9,6 +11,10 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @Configuration
 @EnableWebSocketMessageBroker
 public class PollWebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    @Autowired
+    private JwtHandshakeInterceptor jwtHandshakeInterceptor;
+
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic"); // for sending messages
@@ -17,6 +23,10 @@ public class PollWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").setAllowedOrigins("http://localhost:5173").withSockJS();
+        registry
+                .addEndpoint("/ws")
+                .addInterceptors(jwtHandshakeInterceptor)
+                .setAllowedOriginPatterns("*")
+                .withSockJS();
     }
 }

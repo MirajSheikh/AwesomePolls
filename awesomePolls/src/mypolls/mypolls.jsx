@@ -2,17 +2,20 @@ import { useEffect, useState } from "react"
 import useUserContext from "../pollProvider"
 import light from "./mypolls.module.css"
 import dark from "./mypollsdark.module.css"
-import axios from "axios"
 import Spinner from "../spinner/spinner"
 import { useNavigate } from "react-router-dom"
 import MyPoll from "./mypoll"
 import LeftSideBar from "../leftsidebar/leftsidebar"
 
+import axiosClient from "../axiosClient"
+
 const MyPolls = () => {
+
+  const token = sessionStorage.getItem("token")
 
   const navigate = useNavigate()
 
-  const { user, theme } = useUserContext()
+  const { user, setUser, theme, addToast } = useUserContext()
 
   const styles = theme ? light : dark
 
@@ -26,7 +29,18 @@ const MyPolls = () => {
 
       const start = Date.now()
 
-      const userPolls = await axios.get(`http://localhost:8080/poll/mypolls?author=${user}`)
+      const userPolls = await axiosClient.get(`poll/mypolls?author=${user}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .catch(() => {
+        addToast("Session Expired! Please Login Again", "error")
+          setMyPolls([])
+          setUser(null)
+          navigate("/signin?status=session_expired")
+          return
+        })
 
       const elapsed = Date.now() - start
       const minWait = 1000
@@ -54,7 +68,9 @@ const MyPolls = () => {
 
         {loading 
 
-          ? <Spinner /> 
+          ? <div style={{margin: `auto`, marginTop: `50px`}}>
+            <Spinner size="big" />
+          </div> 
 
           : myPolls.length > 0 
 

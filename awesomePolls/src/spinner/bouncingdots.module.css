@@ -2,14 +2,13 @@
   margin: auto;
   display: flex;
   justify-content: center;
-  margin-top: 40px;
   gap: 20px;
 }
 
 .bouncingDotsContainer div{
-  height: 15px;
-  width: 15px;
-  background-color: hsl(240, 50%, 50%);
+  height: 30px;
+  width: 30px;
+  background-color: hsl(200, 70%, 70%);
   border-radius: 50%;
 }
 

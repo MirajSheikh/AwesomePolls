@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useUserContext from "../pollProvider";
 import lightStyles from "./home.module.css"
 import darkStyles from "./homedark.module.css"
-import axios from "axios";
 import { motion } from "framer-motion";
-import Navbar from "../navbar/navbar";
 import SamplePoll from "../samplepoll/samplepoll";
 import FallingPolls from "../fallingpolls/fallingpolls";
 
@@ -14,40 +12,18 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  async function handleCreateUser(){
-    const user = document.getElementById("username").value
-    const pass = document.getElementById("password").value
-
-    if(user === "" || pass === ""){ 
-      console.log("Cannot Create User") 
-      return
-    }
-
-    const userData = {
-      username: user,
-      password: pass
-    }
-
-    setLoadingUser(true)
-
-    const res = await axios.post(`http://localhost:8080/user`, userData)
-
-    setTimeout(() => {
-      setLoadingUser(false)
-      res ? setUser(user) : console.log("Cannot Login")
-    }, 1000)
-
-  }
-
   return(
-    <div className={theme ? lightStyles.homePage : darkStyles.homePage}>
-      <FallingPolls />
 
-      <motion.div
-        initial={{opacity: 0}} 
-        animate={{opacity: 1}} 
-        exit={{opacity: 0}} 
-        transition={{duration: 0.3}}>
+    <motion.div 
+      initial={{opacity: 0, x: -20}} 
+      animate={{opacity: 1, x: 0}} 
+      transition={{duration: 0.3}} 
+      exit={{opacity: 0, x: 20}}>
+
+      <div className={theme ? lightStyles.homePage : darkStyles.homePage}>
+
+        <FallingPolls />
+
 
         <div className={theme ? lightStyles.home : darkStyles.home}>
 
@@ -86,10 +62,10 @@ const Home = () => {
           </div>
         </div>
 
+
+      </div>
+
     </motion.div>
-
-    </div>
-
   );
 
 }

@@ -1,45 +1,48 @@
 import { useEffect, useState } from "react";
 import light from "./explore.module.css"
 import dark from "./exploredark.module.css"
-import axios from "axios";
 import LeftSideBar from "../leftsidebar/leftsidebar";
 import Explorepolls from "./explorepolls";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import Spinner from "../spinner/spinner";
 import useUserContext from "../pollProvider";
+
+import axiosClient from "../axiosClient";
 
 const Explore = () => {
 
   const navigate = useNavigate()
 
   const { theme } = useUserContext()
-
   const styles = theme ? light : dark
 
-  const [loading, setLoading] = useState(true)
+  const [params, setParams] = useSearchParams()
+  const searchInput = params.get("search")
+
+  const [loading, setLoading] = useState(false)
   const [polls, setPolls] = useState([])
-  const [searchPolls, setSearchPolls] = useState([])
-  const [input, setInput] = useState("")
-  const [searched, setSearched] = useState(false)
+
+  async function fetchPolls(){
+
+    document.getElementById("searchBar").value = ""
+    setLoading(true)
+
+    const start = Date.now()
+
+    const res = await axiosClient.get(`poll/all`)
+
+    const elapsed = Date.now() - start
+    const minWait = 500
+
+    setTimeout(() => {
+      setLoading(false)
+      setPolls(res.data)
+    }, Math.max(0, minWait - elapsed))
+
+  }
 
   useEffect(() => {
-
-    async function fetchPolls(){
-
-      const start = Date.now()
-
-      const res = await axios.get(`http://localhost:8080/poll`)
-
-      const elapsed = Date.now() - start
-      const minWait = 500
-
-      setTimeout(() => {
-        setLoading(false)
-        setPolls(res.data)
-      }, Math.max(0, minWait - elapsed))
-
-    }
 
     fetchPolls()
 
@@ -47,12 +50,18 @@ const Explore = () => {
 
   useEffect(() => {
 
-    if(polls.length > 0 && input !== ""){
-      const sp = polls.filter((poll) => poll.title.toLowerCase().includes(input.toLowerCase()))
-      setSearchPolls(sp)
+    setLoading(true)
+    setPolls([])
+
+    if(polls.length > 0 && searchInput){
+      setTimeout(() => {
+        const sp = polls.filter((poll) => poll.title.toLowerCase().includes(searchInput.toLowerCase()))
+        setLoading(false)
+        setPolls(sp)
+      }, 500)
     }
 
-  }, [input])
+  }, [searchInput])
 
 
   return(
@@ -61,43 +70,47 @@ const Explore = () => {
     <LeftSideBar />
 
     <motion.div 
-      initial={{opacity: 0}} 
-      animate={{opacity: 1}} 
-      exit={{opacity: 0}} 
-      transition={{duration: 0.3}} >
+        initial={{opacity: 0, x: -20}} 
+        animate={{opacity: 1, x: 0}} 
+        transition={{duration: 0.3}} 
+        exit={{opacity: 0, x: 20}}>
 
     <div className={styles.exploreContainer}>
 
       <h1>Explore Polls</h1>
 
-      {searched && 
-            <div className={styles.searchInfo}>
-              <h4>Search Results for - '<span style={{fontStyle: "italic", fontWeight: "700"}}>{input}</span>'</h4>
-              <button onClick={() => setSearched(false)}>Clear Search</button>
-            </div> 
-      }
-
-      {loading && <Spinner />}
-
-      {searched 
-
-            ? searchPolls.length > 0 && 
-
-              searchPolls.map(spoll => 
-                <Explorepolls key={spoll.id} poll={spoll} />
-              )
-
-            : polls.length > 0 
-
-              ? polls.map(poll => 
-                <Explorepolls key={poll.id} poll={poll} />
-              )
-
-              : !loading && <div className={styles.noPolls}>
-                <h2>The Website is Still New 😅</h2>
-                <h3>Create a New Poll to Start Filling it up</h3>
-                <button onClick={() => navigate("/new")}>New Poll</button>
+          <AnimatePresence>
+          {searchInput && 
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.3}}>
+              <div className={styles.searchInfo}>
+                <h3>Showing Search Results for {
+                  <span style={{
+                    fontStyle: "italic", 
+                    color: `${theme ? "hsl(200, 50%, 50%)" : "hsl(200, 50%, 70%)"}`
+                  }}>{searchInput}</span>}
+                </h3>
+                <button onClick={() => {
+                    navigate("/polls")
+                    fetchPolls()
+                  }}>Clear Search</button>
               </div>
+            </motion.div>}
+          </AnimatePresence>
+
+      {loading && <div style={{margin: `auto`}}>
+          <Spinner size="big" />
+        </div>}
+
+      {polls.length > 0 
+
+        ? polls.map(poll => 
+          <Explorepolls key={poll.id} poll={poll} />)
+
+        : !loading && <div className={styles.noPolls}>
+          <h2>No Polls Found</h2>
+          <h3>Be the First one to Create this Poll</h3>
+          <button onClick={() => navigate("/new")}>New Poll</button>
+        </div>
 
       }
 

@@ -3,13 +3,17 @@ import light from "./explore.module.css"
 import dark from "./exploredark.module.css"
 import { useEffect, useState } from "react"
 import useUserContext from "../pollProvider"
-import axios from "axios"
+
+import axiosClient from "../axiosClient"
+import { AnimatePresence } from "framer-motion"
 
 const Explorepolls = ({ poll }) => {
 
+  const token = sessionStorage.getItem("token")
+
   const navigate = useNavigate()
 
-  const { theme, user } = useUserContext()
+  const { theme, user, addToast } = useUserContext()
 
   const styles = theme ? light : dark
 
@@ -29,8 +33,17 @@ const Explorepolls = ({ poll }) => {
         return
       }
 
-      const likeresp = await axios.get(`http://localhost:8080/likeDislike/like?username=${user}&pollId=${poll.id}`)
-      const dislikeresp = await axios.get(`http://localhost:8080/likeDislike/dislike?username=${user}&pollId=${poll.id}`)
+      const likeresp = await axiosClient.get(`likeDislike/like?username=${user}&pollId=${poll.id}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+
+      const dislikeresp = await axiosClient.get(`likeDislike/dislike?username=${user}&pollId=${poll.id}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
 
       setLiked(likeresp.data)
       setDisliked(dislikeresp.data)
@@ -41,13 +54,21 @@ const Explorepolls = ({ poll }) => {
   }, [])
 
   async function handleLike(){
+
+    if(expired){
+      addToast("Cannot Like... The poll has Expired", "error")
+      return
+    }
+
     const likeDislikeDTO = {
       username: user,
       pollId: parseInt(poll.id)
     }
-    const like = await axios.post(`http://localhost:8080/poll/like`, likeDislikeDTO)
-
-    console.log(like.data)
+    await axiosClient.post(`poll/like`, likeDislikeDTO, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
 
     if(!liked){
       setLikeCount(likeCount+1)
@@ -67,13 +88,22 @@ const Explorepolls = ({ poll }) => {
   }
 
   async function handleDislike(){
+
+    if(expired){
+      addToast("Cannot Dislike... The poll has Expired", "error")
+      return
+    }
+
     const likeDislikeDTO = {
       username: user,
       pollId: parseInt(poll.id)
     }
 
-    const dislike = await axios.post(`http://localhost:8080/poll/dislike`, likeDislikeDTO)
-    console.log(dislike.data)
+    await axiosClient.post(`poll/dislike`, likeDislikeDTO, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
 
     if(!disliked){
       setDislikeCount(dislikeCount+1)
@@ -90,6 +120,11 @@ const Explorepolls = ({ poll }) => {
     }
 
     setLiked(false)
+  }
+
+  function handleFavorite(){
+    addToast("Feature Not Available Yet", "warn")
+    return
   }
 
   function timeLeft(){
@@ -117,7 +152,8 @@ const Explorepolls = ({ poll }) => {
 
   return(
 
-    <div className={styles.pollsList}>
+    <AnimatePresence>
+      <div className={styles.pollContainer}>
 
         <div className={expired ? styles.pollExpired : styles.poll}>
           <h2>{poll.title}</h2>
@@ -136,15 +172,15 @@ const Explorepolls = ({ poll }) => {
               <button id={styles.likeButton} onClick={handleLike} 
                 style={{
                 color: `${liked ? "white" : "hsl(240, 50%, 50%)"}`, 
-                  backgroundColor: `${liked ? "hsl(200, 70%, 50%)" : "hsl(200, 70%, 85%)"}`
+                backgroundColor: `${liked ? "hsl(200, 70%, 50%)" : expired ? "hsl(0, 0%, 80%)" : "hsl(200, 70%, 85%)"}`
               }}>{`👍🏻${likeCount}`}</button>
 
               <button id={styles.dislikeButton} onClick={handleDislike} style={{
-              color: `${disliked ? "white" : "hsl(240, 50%, 50%)"}`, 
-                backgroundColor: `${disliked ? "hsl(200, 70%, 50%)" : "hsl(200, 70%, 85%)"}`
+                color: `${disliked ? "white" : "hsl(240, 50%, 50%)"}`, 
+                backgroundColor: `${disliked ? "hsl(200, 70%, 50%)" : expired ? "hsl(0, 0%, 80%)" :  "hsl(200, 70%, 85%)"}`
             }}>{`👎🏻${dislikeCount}`}</button>
 
-              <button id={styles.favoriteButton}>
+              <button id={styles.favoriteButton} onClick={handleFavorite}>
                 {`${poll.favorite ? `💗` : `💔`}`}
               </button>
             </div>
@@ -153,7 +189,8 @@ const Explorepolls = ({ poll }) => {
 
         </div>
 
-    </div>
+      </div>
+    </AnimatePresence>
 
   )
 

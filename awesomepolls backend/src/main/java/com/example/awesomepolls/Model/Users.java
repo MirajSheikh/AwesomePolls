@@ -3,20 +3,19 @@ package com.example.awesomepolls.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
-
+public class Users {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String username;
-
     private String password;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public int getId() {
+        return id;
     }
 
-    public User() {
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
