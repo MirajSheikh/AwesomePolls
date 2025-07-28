@@ -1,7 +1,7 @@
 package com.example.awesomepolls.Controller;
 
-import com.example.awesomepolls.Model.User;
-import com.example.awesomepolls.Repository.UserRepository;
+import com.example.awesomepolls.Model.Users;
+import com.example.awesomepolls.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +14,14 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody User user){
-        User u = userRepository.findByUsername(user.getUsername());
+    public ResponseEntity<?> createUser(@RequestBody Users user){
+        Users u = userRepository.findByUsername(user.getUsername());
 
         if(u == null){
-            User u1 = new User();
+            Users u1 = new Users();
             u1.setUsername(user.getUsername());
             u1.setPassword(user.getPassword());
             userRepository.save(u1);
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers(){
+    public List<Users> getAllUsers(){
         return userRepository.findAll();
     }
 

@@ -1,0 +1,30 @@
+.toastList{
+  z-index: 4;
+  position: fixed;
+  inset: 0 10px auto auto;
+  margin-top: 65px;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: end;
+  gap: 15px;
+}
+
+.toast{
+  display: flex;
+  align-items: center;
+
+  height: 70px;
+  width: min-content;
+  text-wrap: nowrap;
+
+  border-radius: 15px;
+  box-shadow: 0 5px 10px hsl(0, 0%, 10%);
+
+  padding: 0 30px;
+}
+
+.toast h2{
+  font: 500 1.2rem "Ubuntu", sans-serif;
+  color: hsl(0, 0%, 30%);
+}

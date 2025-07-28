@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import light from "./vote.module.css"
 import dark from "./votedark.module.css"
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import useUserContext from "../pollProvider";
@@ -10,9 +9,13 @@ import { motion } from "framer-motion";
 import BouncingDots from "../spinner/bouncingdots";
 import LeftSideBar from "../leftsidebar/leftsidebar";
 
+import axiosClient from "../axiosClient";
+
 const Vote = () => {
 
-  const {user, theme} = useUserContext()
+  const token = sessionStorage.getItem("token")
+
+  const {user, theme, addToast} = useUserContext()
 
   const styles = theme ? light : dark
 
@@ -25,7 +28,7 @@ const Vote = () => {
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
 
-  const [expired, setExpired] = useState(false)
+  const [expired, setExpired] = useState(true)
 
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ const Vote = () => {
 
       const start = Date.now()
 
-      const res = await axios.get(`http://localhost:8080/poll/${pollId}`)
+      const res = await axiosClient.get(`poll/${pollId}`)
 
       const elapsed = Date.now() - start
       const minWait = 500
@@ -57,15 +60,18 @@ const Vote = () => {
 
   //establish websocket connection
   useEffect(() => {
+
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Vote!!", "error")
+      return
+    }
     
-    const socket = new SockJS(`http://localhost:8080/ws`)
+    const socket = new SockJS(`http://localhost:8080/ws?token=${token}`)
     const client = new Client({
       webSocketFactory: () => socket,
       onConnect: () => {
-        console.log("Client Connected Successfully")
 
         client.subscribe(`/topic/poll-updates`, (message) => {
-          console.log("yes subscribe ho rha hai")
           const updatedPoll = JSON.parse(message.body)
           setPoll(updatedPoll)
         })
@@ -75,7 +81,6 @@ const Vote = () => {
         console.error('Additional details: ' + frame.body);
       },
       reconnectDelay: 5000,
-      debug: (str) => console.log(str)
     })
 
     client.activate()
@@ -90,43 +95,77 @@ const Vote = () => {
 
   //votedOption ko backend se fetch kro
   useEffect(() => {
-     axios.get(`http://localhost:8080/userVotes/vote?username=${user}&pollId=${pollId}`)
+
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Vote!!", "error")
+      return
+    }
+
+     axiosClient.get(`userVotes/vote?username=${user}&pollId=${pollId}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
     .then(response => {
       setVotedOption(response.data.voteOptionIndex)
+      addToast("Joined Voting Channel", "success")
       })
-    .catch(err => console.log(err))
+    .catch(() => {
+      addToast("Joined Voting Channel", "success")
+      })
   }, [pollId])
 
   //get liked and disliked on poll change
   useEffect(() => {
-    axios.get(`http://localhost:8080/likeDislike/like?username=${user}&pollId=${pollId}`)
+
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Vote!!", "error")
+      return
+    }
+
+    axiosClient.get(`likeDislike/like?username=${user}&pollId=${pollId}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
     .then(response => {
       setLiked(response.data)
       })
-    .catch(err => console.log(err))
-    axios.get(`http://localhost:8080/likeDislike/dislike?username=${user}&pollId=${pollId}`)
+    .catch(() => {
+        addToast("Session Expired! Please Login Again", "error")
+        sessionStorage.clear()
+      })
+
+    axiosClient.get(`likeDislike/dislike?username=${user}&pollId=${pollId}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
     .then(response => {
       setDisliked(response.data)
       })
-    .catch(err => console.log(err))
+    .catch(() => {
+        addToast("Session Expired! Please Login Again", "error")
+        sessionStorage.clear()
+      })
 
   }, [pollId, poll])
 
   async function handleVote(optionIndex){
 
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Vote!!", "error")
+      return
+    }
+
     if(expired){
-      console.log("Poll Expired!!!")
+      addToast("Poll Expired!!! Cannot Vote", "error")
       return
     }
 
     if(!currentClient || !currentClient.connected){ 
-      console.log("client not connected")
+      addToast("client not connected", "error")
       return 
-    }
-
-    if(!user){
-      document.querySelector('dialog').showModal()
-      return
     }
 
     if(votedOption === optionIndex){
@@ -141,7 +180,6 @@ const Vote = () => {
       optionIndex: optionIndex,
       voter: user
     }
-    console.log(voteMessage)
 
     currentClient.publish({
       destination: `/app/vote`,
@@ -156,16 +194,23 @@ const Vote = () => {
     }
 
     //create or update vote
-    const res = await axios.post(`http://localhost:8080/userVotes`, userVotes)
-
-    console.log(res.data)
+    await axiosClient.post(`userVotes`, userVotes, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
 
   }
 
   function handleLike(){
 
-    if(!user){
-      document.querySelector('dialog').showModal()
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Like!", "error")
+      return
+    }
+
+    if(expired){
+      addToast("Poll Expired!!! Cannot Like", "error")
       return
     }
 
@@ -183,8 +228,13 @@ const Vote = () => {
 
   function handleDislike(){
 
-    if(!user){
-      document.querySelector('dialog').showModal()
+    if(!sessionStorage.getItem("token")){
+      addToast("Please Log in to Dislike", "error")
+      return
+    }
+
+    if(expired){
+      addToast("Poll Expired!!! Cannot Dislike", "error")
       return
     }
 

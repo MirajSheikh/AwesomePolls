@@ -1,14 +1,17 @@
 .search{
+  width: 100%;
   display: flex;
 }
 .search input[type=text]{
-  width: 400px;
+  flex: 1;
+
   font-size: 1rem;
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   background-color: hsl(200, 70%, 95%);
   border: none;
   border-radius: 50px 0 0 50px;
+
   padding: 10px 20px;
 }
 .search input[type=text]:focus{
@@ -19,7 +22,9 @@
   background-color: hsl(200, 70%, 95%);
   border: none;
   border-radius: 0 50px 50px 0;
-  padding: 0 1rem;
+
+  padding: 0 15px;
+
   cursor: pointer;
 }
 .searchButton:hover{
@@ -27,15 +32,16 @@
 }
 .searchList{
   position: fixed;
+  top: 50px;
 
-  width: 500px;
-  margin-top: 5px;
+  width: 40vw;
+
   display: flex;
   flex-direction: column;
-  max-height: 500px;
+
   background-color: hsl(200, 70%, 90%);
   border-radius: 5px;
-  box-shadow: 5px 5px 5px hsla(240, 50%, 40%, 0.3);
+  box-shadow: 5px 5px 10px hsl(200, 5%, 25%);
 }
 .searchItem{
   font-family: "Ubuntu", sans-serif;

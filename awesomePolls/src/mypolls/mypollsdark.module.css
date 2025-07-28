@@ -1,6 +1,10 @@
 .myPolls{
   margin: auto;
   padding: 100px 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .myPolls h1{
   font-family: "Fugaz One", sans-serif;
@@ -105,28 +109,32 @@
 
 
 .noPolls{
-  
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 .noPolls h2{
   font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
-  color: hsl(240, 50%, 50%);
+  color: hsl(200, 50%, 70%);
   font-weight: 500;
 }
 .noPolls h3{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
-  color: hsl(240, 50%, 40%);
+  color: hsl(200, 50%, 70%);
   font-weight: 700;
 }
 .noPolls button{
   font-family: "Sansation", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: hsl(240, 50%, 50%);
   font-weight: 500;
   background-color: hsl(200, 70%, 80%);
-  border: 2px solid hsl(200, 70%, 70%);
-  border-radius: 10px;
+  border: none;
+  border-radius: 50px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;

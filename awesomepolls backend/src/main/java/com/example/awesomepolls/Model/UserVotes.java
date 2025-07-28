@@ -3,7 +3,6 @@ package com.example.awesomepolls.Model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "userVotes")
 public class UserVotes {
 
     @Id
@@ -12,7 +11,7 @@ public class UserVotes {
 
     @ManyToOne
     @JoinColumn(name = "username")
-    private User user;
+    private Users user;
 
     @ManyToOne
     @JoinColumn(name = "pollId")
@@ -20,7 +19,7 @@ public class UserVotes {
 
     private int voteOptionIndex;
 
-    public UserVotes(Long id, User user, Poll poll, int voteOptionIndex) {
+    public UserVotes(Long id, Users user, Poll poll, int voteOptionIndex) {
         this.id = id;
         this.user = user;
         this.poll = poll;
@@ -30,11 +29,11 @@ public class UserVotes {
     public UserVotes() {
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

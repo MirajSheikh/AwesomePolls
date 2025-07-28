@@ -1,20 +1,21 @@
 .infoOverlay{
   z-index: 10;
-  position: absolute;
+  position: fixed;
   inset: 0;
   margin: auto;
-  height: 500px;
+  min-height: max-content;
   min-width: 400px;
   max-width: 30vw;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   background-color: hsl(200, 70%, 90%);
   border-radius: 30px;
   box-shadow: 0 0 20px hsla(200, 70%, 70%, 0.5);
 
-  padding: 20px 40px;
+  padding: 50px;
 
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -24,9 +25,9 @@
 }
 
 .infoOverlay h1{
-  font-size: 3rem;
-  font-family: "Fugaz One", sans-serif;
-  font-weight: 500px;
+  font-size: 2rem;
+  font-family: "Sansation", sans-serif;
+  font-weight: 800;
   color: hsl(200, 70%, 50%);
 }
 

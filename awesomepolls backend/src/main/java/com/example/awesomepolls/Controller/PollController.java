@@ -3,8 +3,8 @@ package com.example.awesomepolls.Controller;
 import com.example.awesomepolls.DTO.LikeDislikeDTO;
 import com.example.awesomepolls.DTO.NewPoll;
 import com.example.awesomepolls.Model.Poll;
-import com.example.awesomepolls.Model.User;
-import com.example.awesomepolls.Repository.UserRepository;
+import com.example.awesomepolls.Model.Users;
+import com.example.awesomepolls.Repository.UserRepo;
 import com.example.awesomepolls.Service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class PollController {
     private final PollService pollService;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     public PollController(PollService pollService){
         this.pollService = pollService;
@@ -33,7 +33,7 @@ public class PollController {
 
     @PostMapping
     public ResponseEntity<?> addPoll(@RequestBody NewPoll newPoll){
-        User author = userRepository.findByUsername(newPoll.getAuthor());
+        Users author = userRepository.findByUsername(newPoll.getAuthor());
         Poll poll = new Poll();
 
         poll.setTitle(newPoll.getTitle());
@@ -53,7 +53,7 @@ public class PollController {
         return ResponseEntity.ok("Created a New Poll");
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<?> getAllPolls(){
         return ResponseEntity.ok(pollService.getAllPolls());
     }

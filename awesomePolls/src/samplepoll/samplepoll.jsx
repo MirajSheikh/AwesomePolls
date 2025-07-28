@@ -4,7 +4,7 @@ import darkStyles from "./samplepolldark.module.css"
 
 const SamplePoll = () => {
 
-  const { theme } = useUserContext()
+  const { theme, addToast } = useUserContext()
 
   const css = theme ? styles : darkStyles
 
@@ -36,9 +36,9 @@ const SamplePoll = () => {
         <div>
           <div><h2>6,198 votes</h2></div>
           <div>
-            <button>1.5k👍🏻</button>
-            <button>109👎🏻</button>
-            <button>🩷</button>
+            <button onClick={() => addToast("Like Clicked", "success")}>1.5k👍🏻</button>
+            <button onClick={() => addToast("Dislike Clicked", "error")}>109👎🏻</button>
+            <button onClick={() => addToast("Feature Not Available Yet", "warn")}>🩷</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
-LAST EDITED - 9/7/25
+LAST EDITED - 25/7/25
 
 Todo -->
 1. Implement Spring Security(1)
+      Fix the Search Bar
+      Make the AwesomePolls Logo
 2. Implement the Favorites system(2)
 3. Mobile Friendly?
 7. Add an animation for deleting poll(1.5)
@@ -16,5 +18,16 @@ Todo -->
 
 KNOWN BUGS
 1. on the vote page when dislike button is clicked on a fresh poll (when likes and dislikes both are 0) the liked button gets clicked and incremented instead of the dislike button. NOTE - after that if we dislike again.. it properly works it just does not work for the first time.
-2. favorite field in Poll Model is useless. Remove it from the Model whenever free.
+
+
+FUTURE TASKS/POLISHING AND ENHANCING EXPERIENCE
+
+FEATURES
+showing all polls or only non-expired polls via a toggle
+when hovering over the collapsed sidebar display a bubble showing what option it is
+implement refresh token for security
+
+DESIGN
+change the look of the mypolls page pls its ugly :)
+maybe change the look of the voting page too
 

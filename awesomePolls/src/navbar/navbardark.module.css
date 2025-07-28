@@ -6,9 +6,13 @@
   height: 50px;
   width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   border-bottom: 2px solid hsl(240, 5%, 40%);
+}
+
+.navLeft{
+  width: 30%;
+  display: flex;
+  align-items: center;
 }
 
 .navLeft a{
@@ -20,19 +24,30 @@
   padding: 17px;
 }
 
-.navRight{
+.navMid{
+  width: 40%;
   display: flex;
   align-items: center;
+}
+
+.navRight{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
   gap: 1rem;
-  margin-right: 30px;
+}
+
+.navRight div:last-child{
+  margin-right: 20px;
 }
 
 .navUsername{
   max-width: 150px;
   font-family: "Ubuntu", sans-serif;
-  font-size: 1.2rem;
-  color: hsl(0, 0%, 20%);
-  background-color: hsl(200, 5%, 85%);
+  font-size: 1rem;
+  color: hsl(0, 0%, 90%);
+  background-color: hsl(200, 5%, 15%);
   border-radius: 50px;
   padding: 10px 20px;
 
@@ -48,7 +63,7 @@
   padding: 10px 20px;
   cursor: pointer;
 
-	transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 .navLoginButton:hover, .navLogoutButton:hover{
   background-color: hsl(200, 70%, 90%);

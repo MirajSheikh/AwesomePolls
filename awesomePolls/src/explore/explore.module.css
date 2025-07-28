@@ -1,4 +1,4 @@
-.pollsList{
+.pollContainer{
   display: flex;
   flex-direction: column;
 }
@@ -6,21 +6,20 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: hsl(0, 50%, 95%);
+  background-color: hsl(0, 0%, 90%);
   border-radius: 10px;
-  border-bottom: 2px solid hsl(0, 50%, 70%);
-  border-right: 2px solid hsl(0, 50%, 70%);
+  border-bottom: 2px solid hsl(0, 0%, 70%);
+  border-right: 2px solid hsl(0, 0%, 70%);
   padding: 2rem;
 }
 .pollExpired h2{
   font-family: "Ubuntu", sans-serif;
   font-size: 2rem;
-  color: hsl(0, 50%, 50%);
+  color: hsl(0, 0%, 30%);
 }
 .pollExpired p{
   font-family: "Ubuntu", sans-serif;
   font-size: 1.2rem;
-  color: hsl(0, 0%, 10%);
 }
 
 
@@ -82,8 +81,8 @@
   width: 200px;
   font-family: "Sansation", sans-serif;
   font-size: 1.2rem;
-  color: hsl(0, 50%, 50%);
-  background-color: hsl(0, 50%, 90%);
+  color: hsl(0, 0%, 30%);
+  background-color: hsl(0, 0%, 80%);
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -104,10 +103,30 @@
   background-color: hsl(200, 70%, 70%);
 }
 .pollExpired .pollButtons button:hover{
-  background-color: hsl(0, 50%, 85%);
+  background-color: hsl(0, 0%, 75%);
 }
 .pollExpired .pollButtons button:active{
-  background-color: hsl(0, 50%, 70%);
+  background-color: hsl(0, 0%, 70%);
+}
+
+.searchInfo{
+  display: flex;
+  align-items: center;
+}
+.searchInfo h3{
+  flex: 1;
+  font: 500 1rem "Ubuntu", sans-serif;
+}
+.searchInfo button{
+  font: 500 1rem "Sansation", sans-serif ;
+  background-color: hsl(0, 50%, 90%);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .noPolls{

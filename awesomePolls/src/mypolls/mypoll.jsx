@@ -1,7 +1,8 @@
-import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Info from "../info/info"
+
+import axiosClient from "../axiosClient"
 
 const MyPoll = ({ styles, poll, updating, setUpdating }) => {
 
@@ -13,7 +14,7 @@ const MyPoll = ({ styles, poll, updating, setUpdating }) => {
   async function handlePollDelete(){
 
     //need to show delete confirmation window on click
-    const resp = await axios.delete(`http://localhost:8080/poll/${poll.id}`)
+    const resp = await axiosClient.delete(`poll/${poll.id}`)
     setUpdating(!updating)
     console.log(resp.data)
 

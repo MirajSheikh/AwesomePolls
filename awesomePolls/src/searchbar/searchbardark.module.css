@@ -1,15 +1,17 @@
 .search{
+  width: 100%;
   display: flex;
 }
 .search input[type=text]{
-  width: 30vw;
+  flex: 1;
+
   font-size: 1rem;
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
-  color: hsl(200, 5%, 90%);
-  background-color: hsl(200, 70%, 95%);
-	border: none;
+  background-color: hsl(200, 50%, 90%);
+  border: none;
   border-radius: 50px 0 0 50px;
+
   padding: 10px 20px;
 }
 .search input[type=text]:focus{
@@ -17,33 +19,34 @@
 }
 .searchButton{
   font-size: 1.5rem;
-  background-color: hsl(200, 70%, 95%);
-	border: none;
+  background-color: hsl(200, 50%, 90%);
+  border: none;
   border-radius: 0 50px 50px 0;
-  padding: 0 1rem;
+
+  padding: 0 15px;
+
   cursor: pointer;
 }
 .searchButton:hover{
-  background-color: hsl(200, 70%, 90%);
+  background-color: hsl(200, 50%, 80%);
 }
 .searchList{
   position: fixed;
   top: 50px;
 
+  width: 40vw;
+
   display: flex;
   flex-direction: column;
-  width: 250px;
-  max-width: 250px;
-  max-height: 500px;
-  background-color: hsl(200, 5%, 80%);
+
+  background-color: hsl(200, 50%, 90%);
   border-radius: 5px;
-  box-shadow: 5px 5px 5px hsla(240, 50%, 40%, 0.3);
+  box-shadow: 5px 5px 10px hsl(200, 5%, 5%);
 }
 .searchItem{
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  color: hsl(0, 0%, 20%);
   padding: 1rem;
 }
 .searchItem:first-child{
@@ -56,7 +59,7 @@
   border-radius: 5px;
 }
 .searchItem:hover{
-  background-color: hsl(200, 5%, 85%);
+  background-color: hsl(200, 50%, 80%);
   cursor: pointer;
 }
 

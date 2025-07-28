@@ -1,15 +1,13 @@
 package com.example.awesomepolls.Controller;
 
-import com.example.awesomepolls.DTO.LikeDislikeDTO;
 import com.example.awesomepolls.Model.LikeDislike;
 import com.example.awesomepolls.Model.Poll;
-import com.example.awesomepolls.Model.User;
+import com.example.awesomepolls.Model.Users;
 import com.example.awesomepolls.Repository.LikeDislikeRepository;
 import com.example.awesomepolls.Repository.PollRepository;
-import com.example.awesomepolls.Repository.UserRepository;
+import com.example.awesomepolls.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,14 +19,14 @@ public class LikeDislikeController {
     private LikeDislikeRepository likeDislikeRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     @Autowired
     private PollRepository pollRepository;
 
     @GetMapping("/like")
     public ResponseEntity<?> getLiked(@RequestParam String username, @RequestParam Long pollId){
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike ld = likeDislikeRepository.findByUserAndPoll(user, poll);
         return ld != null
@@ -38,7 +36,7 @@ public class LikeDislikeController {
 
     @GetMapping("/dislike")
     public ResponseEntity<?> getDisliked(@RequestParam String username, @RequestParam Long pollId){
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike ld = likeDislikeRepository.findByUserAndPoll(user, poll);
         return ld != null

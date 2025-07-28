@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "polls")
 public class Poll {
 
     @Id
@@ -15,7 +14,7 @@ public class Poll {
 
     @ManyToOne()
     @JoinColumn(name = "author")
-    private User user;
+    private Users user;
 
     private String title;
 
@@ -37,7 +36,7 @@ public class Poll {
     private boolean expired;
     private int winner = 0;
 
-    public Poll(User user, Long likes, Long dislikes, List<Long> voteCounts, Long totalVotes) {
+    public Poll(Users user, Long likes, Long dislikes, List<Long> voteCounts, Long totalVotes) {
         this.user = user;
         this.likes = likes;
         this.dislikes = dislikes;
@@ -61,7 +60,7 @@ public class Poll {
     public Poll() {
     }
 
-    public Poll(User user) {
+    public Poll(Users user) {
         this.user = user;
     }
 
@@ -121,11 +120,11 @@ public class Poll {
         this.options = options;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.user = user;
     }
 

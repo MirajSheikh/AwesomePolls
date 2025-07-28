@@ -4,11 +4,11 @@ import com.example.awesomepolls.DTO.LikeDislikeDTO;
 import com.example.awesomepolls.DTO.VoteMessage;
 import com.example.awesomepolls.Model.LikeDislike;
 import com.example.awesomepolls.Model.Poll;
-import com.example.awesomepolls.Model.User;
 import com.example.awesomepolls.Model.UserVotes;
+import com.example.awesomepolls.Model.Users;
 import com.example.awesomepolls.Repository.LikeDislikeRepository;
 import com.example.awesomepolls.Repository.PollRepository;
-import com.example.awesomepolls.Repository.UserRepository;
+import com.example.awesomepolls.Repository.UserRepo;
 import com.example.awesomepolls.Repository.UserVotesRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class PollWebSocketController {
     private UserVotesRepository userVotesRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     @Autowired
     private LikeDislikeRepository likeDislikeRepository;
@@ -38,7 +38,7 @@ public class PollWebSocketController {
     @SendTo("/topic/poll-updates")
     public Poll handleVote(@Payload VoteMessage vote) {
         Poll poll = pollRepository.findById(vote.getPollId()).orElseThrow();
-        User user = userRepository.findByUsername(vote.getVoter());
+        Users user = userRepository.findByUsername(vote.getVoter());
 
         List<Long> voteCounts = poll.getVoteCounts();
 
@@ -72,7 +72,7 @@ public class PollWebSocketController {
     @MessageMapping("/like")
     @SendTo("/topic/poll-updates")
     public Poll handleLike(@Payload LikeDislikeDTO likeDislikeDTO){
-        User user = userRepository.findByUsername(likeDislikeDTO.getUsername());
+        Users user = userRepository.findByUsername(likeDislikeDTO.getUsername());
         Poll poll = pollRepository.findById(likeDislikeDTO.getPollId()).orElseThrow();
 
         LikeDislike ld = likeDislikeRepository.findByUserAndPoll(user, poll);
@@ -112,19 +112,19 @@ public class PollWebSocketController {
     @MessageMapping("/dislike")
     @SendTo("/topic/poll-updates")
     public Poll handleDislike(@Payload LikeDislikeDTO likeDislikeDTO){
-        User user = userRepository.findByUsername(likeDislikeDTO.getUsername());
+        Users user = userRepository.findByUsername(likeDislikeDTO.getUsername());
         Poll poll = pollRepository.findById(likeDislikeDTO.getPollId()).orElseThrow();
 
         LikeDislike ld = likeDislikeRepository.findByUserAndPoll(user, poll);
 
 //        if any record does not exist
         if(ld == null){
-            poll.setLikes(poll.getLikes() + 1);
+            poll.setDislikes(poll.getDislikes() + 1);
             LikeDislike newld = new LikeDislike();
             newld.setUser(user);
             newld.setPoll(poll);
-            newld.setLiked(true);
-            newld.setDisliked(false);
+            newld.setLiked(false);
+            newld.setDisliked(true);
             likeDislikeRepository.save(newld);
         }
 //        if record exists

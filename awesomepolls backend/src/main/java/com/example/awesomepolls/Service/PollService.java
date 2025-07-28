@@ -2,14 +2,13 @@ package com.example.awesomepolls.Service;
 
 import com.example.awesomepolls.Model.LikeDislike;
 import com.example.awesomepolls.Model.Poll;
-import com.example.awesomepolls.Model.User;
+import com.example.awesomepolls.Model.Users;
 import com.example.awesomepolls.Repository.PollRepository;
-import com.example.awesomepolls.Repository.UserRepository;
 import com.example.awesomepolls.Repository.LikeDislikeRepository;
 
+import com.example.awesomepolls.Repository.UserRepo;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,10 +17,10 @@ import java.util.Optional;
 public class PollService {
 
     private final PollRepository pollRepository;
-    private final UserRepository userRepository;
+    private final UserRepo userRepository;
     private final LikeDislikeRepository likeDislikeRepository;
 
-    public PollService(PollRepository pollRepository, UserRepository userRepository, LikeDislikeRepository likeDislikeRepository){
+    public PollService(PollRepository pollRepository, UserRepo userRepository, LikeDislikeRepository likeDislikeRepository){
         this.pollRepository = pollRepository;
         this.userRepository = userRepository;
         this.likeDislikeRepository = likeDislikeRepository;
@@ -49,13 +48,13 @@ public class PollService {
     }
 
     public List<Poll> getMyPolls(String author){
-        User user = userRepository.findByUsername(author);
+        Users user = userRepository.findByUsername(author);
         return pollRepository.findAllByUser(user);
     }
 
     public boolean like(Long pollId, String username){
 
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
 
@@ -107,7 +106,7 @@ public class PollService {
     }
 
     public boolean dislike(Long pollId, String username){
-        User user = userRepository.findByUsername(username);
+        Users user = userRepository.findByUsername(username);
         Poll poll = pollRepository.findById(pollId).orElseThrow();
         LikeDislike likeDislike = likeDislikeRepository.findByUserAndPoll(user, poll);
 
